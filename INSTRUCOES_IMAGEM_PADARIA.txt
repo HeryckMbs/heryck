@@ -1,0 +1,24 @@
+INSTRUÇÕES PARA ADICIONAR A IMAGEM DA PADARIA
+==============================================
+
+1. Salve a imagem do sistema da padaria na pasta raiz do projeto (mesma pasta do index.html)
+2. Nomeie o arquivo como: padaria-nova-esperanca.jpg
+   (ou padaria-nova-esperanca.png se for PNG)
+3. A imagem será exibida automaticamente no card do projeto "Sistema de Gestão para Padaria"
+
+FORMATOS ACEITOS:
+- JPG / JPEG
+- PNG
+- WEBP
+
+TAMANHO RECOMENDADO:
+- Largura: 700px ou mais
+- Altura: proporcional (a imagem será cortada para 200px de altura no card)
+- Proporção: qualquer (será ajustada automaticamente)
+
+ALTERNATIVA:
+Se sua imagem tiver outro nome, edite o arquivo index.html e procure por:
+style="background-image: url('padaria-nova-esperanca.jpg');"
+
+E altere 'padaria-nova-esperanca.jpg' para o nome do seu arquivo.
+

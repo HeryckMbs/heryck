@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heryck Mota | Full Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">&lt;HM/&gt;</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-lang-pt="Início" data-lang-en="Home">Início</a></li>
+                <li><a href="#about" class="nav-link" data-lang-pt="Sobre" data-lang-en="About">Sobre</a></li>
+                <li><a href="#experience" class="nav-link" data-lang-pt="Experiência" data-lang-en="Experience">Experiência</a></li>
+                <li><a href="#projects" class="nav-link" data-lang-pt="Projetos" data-lang-en="Projects">Projetos</a></li>
+                <li><a href="#skills" class="nav-link" data-lang-pt="Skills" data-lang-en="Skills">Skills</a></li>
+                <li><a href="#contact" class="nav-link" data-lang-pt="Contato" data-lang-en="Contact">Contato</a></li>
+            </ul>
+            <button class="language-toggle" id="languageToggle" aria-label="Toggle language">
+                <span class="lang-icon">🌐</span>
+                <span class="lang-text">PT</span>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="HERYCK MOTA">
+                    <span class="glitch-text">HERYCK MOTA</span>
+                </h1>
+            </div>
+            <div class="hero-subtitle">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <p class="hero-description" data-lang-pt="Desenvolvedor Full Stack especializado em construir sistemas escaláveis em PHP, Laravel e Vue.js. Transformo necessidades de negócio em soluções digitais que geram resultados mensuráveis e aumentam a eficiência operacional." data-lang-en="Full Stack Developer specialized in building scalable systems with PHP, Laravel and Vue.js. I transform business needs into digital solutions that generate measurable results and increase operational efficiency.">
+                Desenvolvedor Full Stack especializado em construir sistemas escaláveis em PHP, Laravel e Vue.js. 
+                Transformo necessidades de negócio em soluções digitais que geram resultados mensuráveis e aumentam a eficiência operacional.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary" data-lang-pt="Entre em Contato" data-lang-en="Get in Touch">Entre em Contato</a>
+                <a href="#projects" class="btn btn-secondary" data-lang-pt="Ver Projetos" data-lang-en="View Projects">Ver Projetos</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">01.</span>
+                <span class="title-text" data-lang-pt="Sobre Mim" data-lang-en="About Me">Sobre Mim</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="profile.jpg" alt="Heryck Mota" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-placeholder" style="display: none;">
+                        <div class="placeholder-icon">HM</div>
+                        <p>Adicione sua foto<br>como profile.jpg</p>
+                    </div>
+                    <div class="photo-glow"></div>
+                </div>
+                <div class="about-text">
+                    <p data-lang-pt="<strong>Transformo problemas em soluções.</strong> Cada desafio que você enfrenta é uma oportunidade para criar algo extraordinário. Trabalho desde a concepção até a entrega final, garantindo que cada projeto seja desenvolvido com excelência técnica e atenção aos detalhes." data-lang-en="<strong>I transform problems into solutions.</strong> Every challenge you face is an opportunity to create something extraordinary. I work from conception to final delivery, ensuring each project is developed with technical excellence and attention to detail.">
+                        <strong data-lang-pt="Transformo problemas em soluções." data-lang-en="I transform problems into solutions.">Transformo problemas em soluções.</strong> Cada desafio que você enfrenta é uma oportunidade 
+                        para criar algo extraordinário. Trabalho desde a concepção até a entrega final, garantindo que 
+                        cada projeto seja desenvolvido com excelência técnica e atenção aos detalhes.
+                    </p>
+                    <p data-lang-pt="Minha abordagem é completa: entendo suas necessidades, planejo a arquitetura ideal, desenvolvo com as melhores práticas e entrego sistemas robustos e escaláveis. Do zero até a solução final, estou presente em cada etapa do processo." data-lang-en="My approach is complete: I understand your needs, plan the ideal architecture, develop with best practices and deliver robust and scalable systems. From zero to final solution, I'm present at every stage of the process.">
+                        Minha abordagem é completa: entendo suas necessidades, planejo a arquitetura ideal, desenvolvo 
+                        com as melhores práticas e entrego sistemas robustos e escaláveis. Do zero até a solução final, 
+                        estou presente em cada etapa do processo.
+                    </p>
+                    <p data-lang-pt="Com experiência extensa em PHP, Laravel, Node.js, TypeScript, Vue.js e outras tecnologias modernas, construo aplicações que não apenas funcionam, mas que transformam a forma como você trabalha e gerencia seu negócio." data-lang-en="With extensive experience in PHP, Laravel, Node.js, TypeScript, Vue.js and other modern technologies, I build applications that not only work, but transform the way you work and manage your business.">
+                        Com experiência extensa em PHP, Laravel, Node.js, TypeScript, Vue.js e outras tecnologias modernas, 
+                        construo aplicações que não apenas funcionam, mas que transformam a forma como você trabalha e 
+                        gerencia seu negócio.
+                    </p>
+                    <div class="tech-stack">
+                        <h3 data-lang-pt="Tecnologias que trabalho:" data-lang-en="Technologies I work with:">Tecnologias que trabalho:</h3>
+                        <div class="tech-list">
+                            <span class="tech-item">PHP</span>
+                            <span class="tech-item">Laravel</span>
+                            <span class="tech-item">Node.js</span>
+                            <span class="tech-item">NestJS</span>
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">TypeScript</span>
+                            <span class="tech-item">PostgreSQL</span>
+                            <span class="tech-item">MySQL</span>
+                            <span class="tech-item">Docker</span>
+                            <span class="tech-item">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">02.</span>
+                <span class="title-text" data-lang-pt="Experiência" data-lang-en="Experience">Experiência</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date" data-lang-pt="Abr 2025 - Presente" data-lang-en="Apr 2025 - Present">Abr 2025 - Presente</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
+                        <h4 class="timeline-company">SENAI Soluções Digitais</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento e manutenção de aplicações para o setor de Responsabilidade Social. Utilizando Laravel e Livewire como frameworks principais para entregar soluções de alta qualidade, escaláveis e manuteníveis. Participação em cerimônias Scrum." data-lang-en="Working on the development and maintenance of applications for the Social Responsibility sector. Using Laravel and Livewire as core frameworks to deliver high-quality, scalable, and maintainable solutions. Participating in Scrum ceremonies, contributing to sprint planning, tracking, and delivery.">
+                            Desenvolvimento e manutenção de aplicações para o setor de Responsabilidade Social. 
+                            Utilizando Laravel e Livewire como frameworks principais para entregar soluções de alta qualidade, 
+                            escaláveis e manuteníveis. Participação em cerimônias Scrum.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>PHP</span>
+                            <span>Laravel</span>
+                            <span>Livewire</span>
+                            <span>Docker</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2025 - Ago 2025</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack Pleno" data-lang-en="Full Stack Developer Pleno">Desenvolvedor Full Stack Pleno</h3>
+                        <h4 class="timeline-company">China Fácil</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento e manutenção de plataforma de e-commerce de exportação. Implementação de features complexas em Laravel, integração com múltiplas APIs de terceiros (AwesomeAPI, Google Maps Routes, ChatGPT) e melhorias na experiência do usuário com Vue.js." data-lang-en="Development and maintenance of an e-commerce export platform similar to Alibaba and JoomPro. Implemented complex Laravel features, leveraging Commands, Jobs, Mails, Observers, and other advanced concepts. Integrated multiple third-party APIs such as AwesomeAPI, Google Maps Routes, and ChatGPT. Improved front-end user experience with Vue.js enhancements.">
+                            Desenvolvimento e manutenção de plataforma de e-commerce de exportação. 
+                            Implementação de features complexas em Laravel, integração com múltiplas APIs de terceiros 
+                            (AwesomeAPI, Google Maps Routes, ChatGPT) e melhorias na experiência do usuário com Vue.js.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>Laravel</span>
+                            <span>Vue.js</span>
+                            <span>Docker</span>
+                            <span>MySQL</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mar 2025 - Ago 2025</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
+                        <h4 class="timeline-company">Nix International Control</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento de sistema para gerenciar processos de importação e exportação, incluindo gestão de clientes com catálogos de produtos e cálculos automatizados. Integração com API externa do Banco Central do Brasil para taxas de câmbio." data-lang-en="Developed a system to manage import and export processes, including customer management with product catalogs, and automated calculations for all process-related costs. Integrated with Banco Central do Brasil's external API to retrieve and update currency exchange rates.">
+                            Desenvolvimento de sistema para gerenciar processos de importação e exportação, 
+                            incluindo gestão de clientes com catálogos de produtos e cálculos automatizados. 
+                            Integração com API externa do Banco Central do Brasil para taxas de câmbio.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>PHP</span>
+                            <span>Laravel</span>
+                            <span>jQuery</span>
+                            <span>PostgreSQL</span>
+                            <span>AWS EC2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fev 2024 - Set 2024</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
+                        <h4 class="timeline-company">Bakery Nova Esperança</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento completo de sistema de gestão para padaria em São Paulo. Plataforma inclui dashboards com relatórios visuais, controle de estoque, gestão de pedidos, gestão de clientes com precificação diferenciada." data-lang-en="Developed a complete bakery management system for a business in São Paulo. The platform includes dashboards with visual reports, inventory and stock control, order management with a dedicated drivers' page, customer management with tiered pricing based on customer level.">
+                            Desenvolvimento completo de sistema de gestão para padaria em São Paulo. 
+                            Plataforma inclui dashboards com relatórios visuais, controle de estoque, 
+                            gestão de pedidos, gestão de clientes com precificação diferenciada.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>PHP</span>
+                            <span>Laravel</span>
+                            <span>PostgreSQL</span>
+                            <span>AWS EC2</span>
+                            <span>jQuery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dez 2023 - Dez 2024</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
+                        <h4 class="timeline-company">Norven</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento de sistemas para o setor de distribuição elétrica, liderando projetos para grandes clientes como Equatorial Energia. Gerenciamento de levantamento de requisitos, planejamento arquitetural e implementação." data-lang-en="Developed systems for the electric distribution sector, leading projects for major clients such as Equatorial Energia. Managed requirement gathering, architectural planning, and implementation.">
+                            Desenvolvimento de sistemas para o setor de distribuição elétrica, liderando projetos 
+                            para grandes clientes como Equatorial Energia. Gerenciamento de levantamento de requisitos, 
+                            planejamento arquitetural e implementação.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>Laravel</span>
+                            <span>Vue.js</span>
+                            <span>Node.js</span>
+                            <span>NestJS</span>
+                            <span>TypeScript</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2023 - Nov 2023</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
+                        <h4 class="timeline-company">Laboratório Raça</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento de novas funcionalidades e manutenção de sistemas existentes. Principais atividades incluíram desenvolvimento usando processamento assíncrono (Jobs e Queues), criação e correção de PDFs gerados pelo sistema, integração com serviços externos e geração de notas fiscais para as prefeituras de Goiânia e Belo Horizonte." data-lang-en="Development of new functionalities and maintaining existing systems. Main activities included development using asynchronous processing (Jobs and Queues), creation and correction of PDFs generated by the system, integration with external services and invoice generation for Goiânia and Belo Horizonte City Halls.">
+                            Desenvolvimento de novas funcionalidades e manutenção de sistemas existentes. Principais atividades incluíram desenvolvimento usando processamento assíncrono (Jobs e Queues), criação e correção de PDFs gerados pelo sistema, integração com serviços externos e geração de notas fiscais para as prefeituras de Goiânia e Belo Horizonte.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>Laravel</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>jQuery</span>
+                            <span>Docker</span>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2023 - Jun 2023</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
+                        <h4 class="timeline-company">Net Suprema Tecnologia da Informação</h4>
+                        <p class="timeline-description" data-lang-pt="Manutenção de sistemas legados especializados em imóveis, institutos, sindicatos e cooperativas. Principais atividades envolveram integração entre esses sistemas e desenvolvimento de novas funcionalidades, com foco em compreensão de consultas complexas de banco de dados e implementação de PHP baseado em Programação Orientada a Objetos (OOP)." data-lang-en="Maintenance of legacy systems specialized in real estate, institutes, unions, and cooperatives. Primary activities involved integration among these systems and development of new functionalities, focusing on understanding complex database queries and implementing PHP based on Object-Oriented Programming (OOP).">
+                            Manutenção de sistemas legados especializados em imóveis, institutos, sindicatos e cooperativas. Principais atividades envolveram integração entre esses sistemas e desenvolvimento de novas funcionalidades, com foco em compreensão de consultas complexas de banco de dados e implementação de PHP baseado em Programação Orientada a Objetos (OOP).
+                        </p>
+                        <div class="timeline-tech">
+                            <span>Laravel</span>
+                            <span>PHP</span>
+                            <span>PostgreSQL</span>
+                            <span>jQuery</span>
+                            <span>OOP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jul 2022 - Jan 2023</div>
+                        <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software - Estágio" data-lang-en="Software Developer Internship">Desenvolvedor de Software - Estágio</h3>
+                        <h4 class="timeline-company">ABL Prime</h4>
+                        <p class="timeline-description" data-lang-pt="Desenvolvimento de sistemas web usando PHP/Laravel e aplicações móveis com Flutter. Principais responsabilidades incluíram integração com o sistema UAU (Globaltec), suporte para tickets via GLPI, desenvolvimento de novas funcionalidades e manutenção de sistemas existentes." data-lang-en="Worked on web system development using PHP/Laravel and mobile applications with Flutter. Main responsibilities included integrating with the UAU system (Globaltec), providing support for tickets via GLPI, developing new functionalities, and maintaining existing systems.">
+                            Desenvolvimento de sistemas web usando PHP/Laravel e aplicações móveis com Flutter. Principais responsabilidades incluíram integração com o sistema UAU (Globaltec), suporte para tickets via GLPI, desenvolvimento de novas funcionalidades e manutenção de sistemas existentes.
+                        </p>
+                        <div class="timeline-tech">
+                            <span>Laravel</span>
+                            <span>PHP</span>
+                            <span>Flutter</span>
+                            <span>SQL Server</span>
+                            <span>Bootstrap</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">03.</span>
+                <span class="title-text">Projetos</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" data-image="image1.png">
+                        <div class="project-image-placeholder">
+                            <div class="placeholder-icon-small">💼</div>
+                            <p>ERP Comércio Exterior</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ERP de Comércio Exterior</h3>
+                        <p class="project-description">
+                            Sistema ERP completo que automatiza processos de importação e exportação, reduzindo tempo de processamento 
+                            em até 60%. Inclui gestão de clientes, catálogos de produtos, cálculos automatizados de custos e integração 
+                            com API do Banco Central para taxas de câmbio em tempo real. Resultado: controle total do ciclo de vida das 
+                            operações com redução significativa de erros manuais.
+                        </p>
+                        <div class="project-tech">
+                            <span>Laravel</span>
+                            <span>PostgreSQL</span>
+                            <span>jQuery</span>
+                            <span>AWS EC2</span>
+                            <span>Nginx</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" data-image="image2.png">
+                        <div class="project-image-placeholder">
+                            <div class="placeholder-icon-small">🍞</div>
+                            <p>Padaria Nova Esperança</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema de Gestão para Padaria</h3>
+                        <p class="project-description">
+                            Plataforma completa que transformou a gestão operacional de uma padaria em São Paulo. Sistema inclui 
+                            dashboards com relatórios em tempo real, controle automatizado de estoque, gestão de pedidos com rastreamento 
+                            de entregas e sistema inteligente de precificação por nível de cliente. Resultado: aumento de 30% na 
+                            eficiência operacional e redução de 25% no desperdício de produtos.
+                        </p>
+                        <div class="project-tech">
+                            <span>Laravel</span>
+                            <span>PostgreSQL</span>
+                            <span>jQuery</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" data-image="image3.png">
+                        <div class="project-image-placeholder">
+                            <div class="placeholder-icon-small">📱</div>
+                            <p>PIB Finsocial</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PIB Finsocial</h3>
+                        <p class="project-description">
+                            Aplicativo publicado na Play Store para gerenciar o portfólio da equipe de música, 
+                            organizar eventos e armazenar partituras na nuvem.
+                        </p>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Mobile</span>
+                            <span>Cloud</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" data-image="image4.png">
+                        <div class="project-image-placeholder">
+                            <div class="placeholder-icon-small">⚡</div>
+                            <p>Calculadora Energética</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Calculadora de Eficiência Energética</h3>
+                        <p class="project-description">
+                            Sistema desenvolvido para o Programa Potencializee que calcula ações de eficiência energética e retrofit de 
+                            equipamentos. Plataforma inclui análise completa de viabilidade financeira (VPL, Payback, TIR, ROI), cálculo 
+                            de economia energética e redução de emissões de CO2e. Sistema em produção, ajudando empresas a identificar 
+                            oportunidades de economia de energia com precisão técnica.
+                        </p>
+                        <div class="project-tech">
+                            <span>Laravel</span>
+                            <span>Vue.js</span>
+                            <span>PostgreSQL</span>
+                            <span>Calculadora</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" data-image="image5.png">
+                        <div class="project-image-placeholder">
+                            <div class="placeholder-icon-small">🏃</div>
+                            <p>+Esportes</p>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">+Esportes</h3>
+                        <p class="project-description">
+                            Sistema e aplicativo para gerenciamento de um conglomerado de associações esportivas. 
+                            Plataforma completa que permite gerenciar múltiplas associações, cada uma com seus próprios atletas, 
+                            eventos e informações organizacionais.
+                        </p>
+                        <div class="project-tech">
+                            <span>Laravel</span>
+                            <span>Mobile App</span>
+                            <span>Gestão</span>
+                            <span>Multi-tenant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">04.</span>
+                <span class="title-text" data-lang-pt="Depoimentos" data-lang-en="Testimonials">Depoimentos</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text" data-lang-pt="O sistema desenvolvido pela Heryck transformou completamente nossa gestão. A redução de tempo em processos operacionais foi impressionante e o retorno sobre investimento superou nossas expectativas." data-lang-en="The system developed by Heryck completely transformed our management. The reduction in time for operational processes was impressive and the return on investment exceeded our expectations.">
+                            "O sistema desenvolvido pela Heryck transformou completamente nossa gestão. A redução de tempo em processos 
+                            operacionais foi impressionante e o retorno sobre investimento superou nossas expectativas."
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Cliente - Padaria Nova Esperança</strong>
+                            <span>São Paulo, SP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text" data-lang-pt="Profissional extremamente competente e comprometido. Entregou um sistema robusto que resolveu problemas críticos do nosso negócio. A comunicação foi excelente em todas as etapas do projeto." data-lang-en="Extremely competent and committed professional. Delivered a robust system that solved critical problems in our business. Communication was excellent at all stages of the project.">
+                            "Profissional extremamente competente e comprometido. Entregou um sistema robusto que resolveu problemas 
+                            críticos do nosso negócio. A comunicação foi excelente em todas as etapas do projeto."
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Cliente - Nix International Control</strong>
+                            <span>Comércio Exterior</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">05.</span>
+                <span class="title-text">Skills</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">PHP</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Laravel</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">NestJS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Vue.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">jQuery</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bootstrap</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Livewire</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Database & Infrastructure</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">PostgreSQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS EC2</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Nginx</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">06.</span>
+                <span class="title-text">Contato</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vamos transformar seu desafio em solução?</h3>
+                    <p>
+                        Tenho um problema que precisa ser resolvido? Vamos conversar! Estou pronto para entender 
+                        suas necessidades e desenvolver a solução completa, desde o planejamento até a entrega final. 
+                        Cada projeto é uma oportunidade de criar algo extraordinário.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:heryckmota@gmail.com" class="contact-link">
+                            <span class="contact-icon">✉</span>
+                            <span>heryckmota@gmail.com</span>
+                        </a>
+                        <a href="tel:+5562985583519" class="contact-link">
+                            <span class="contact-icon">📱</span>
+                            <span>(62) 98558-3519</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/heryckmbss/" target="_blank" class="contact-link">
+                            <span class="contact-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/HeryckMbs" target="_blank" class="contact-link">
+                            <span class="contact-icon">💻</span>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Nome</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Mensagem</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Heryck Mota. Todos os direitos reservados.</p>
+            <p class="footer-text">Desenvolvido com <span class="heart">❤</span> e muito código</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
