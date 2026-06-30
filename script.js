@@ -1,89 +1,97 @@
-// Matrix Rain Effect
-const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%+-/~{[|`]}";
-const matrixArray = matrix.split("");
-
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-
-const drops = [];
-for (let x = 0; x < columns; x++) {
-    drops[x] = 1;
-}
-
-function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#00ff41';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-        drops[i]++;
-    }
-}
-
-setInterval(drawMatrix, 35);
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const newColumns = canvas.width / fontSize;
-    drops.length = 0;
-    for (let x = 0; x < newColumns; x++) {
-        drops[x] = 1;
-    }
-});
-
-// Language Management
-let currentLang = localStorage.getItem('language') || 'pt';
-const typingTextsPt = [
-    'Full Stack Developer',
-    'PHP | Laravel | Node.js',
-    'Vue.js | TypeScript',
-    'Desenvolvedor de Software'
-];
-const typingTextsEn = [
-    'Full Stack Developer',
-    'PHP | Laravel | Node.js',
-    'Vue.js | TypeScript',
-    'Software Developer'
-];
-
-// Typing Effect
+let currentLang = localStorage.getItem('language') === 'en' ? 'en' : 'pt';
+let typingTimeout = null;
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-let typingTimeout = null;
-const TYPING_SPEED = 80; // Velocidade fixa para digitar (ms)
-const DELETING_SPEED = 50; // Velocidade fixa para deletar (ms)
-const PAUSE_BEFORE_DELETE = 2000; // Pausa antes de começar a deletar (ms)
-const PAUSE_BEFORE_TYPE = 500; // Pausa antes de começar a digitar novo texto (ms)
+
+const typingTexts = {
+    pt: [
+        'Laravel, PHP e Livewire',
+        'APIs, ERPs e integrações',
+        'Vue.js, Node.js e TypeScript',
+        'Arquitetura para sistemas reais'
+    ],
+    en: [
+        'Laravel, PHP, and Livewire',
+        'APIs, ERPs, and integrations',
+        'Vue.js, Node.js, and TypeScript',
+        'Architecture for real systems'
+    ]
+};
+
+const uiText = {
+    loadingEmail: {
+        pt: 'Abrindo e-mail...',
+        en: 'Opening email...'
+    },
+    emailSuccess: {
+        pt: 'Redirecionando para seu cliente de e-mail...',
+        en: 'Redirecting to your email client...'
+    }
+};
+
+function translate(key) {
+    return uiText[key]?.[currentLang] || uiText[key]?.pt || '';
+}
+
+function initMatrix() {
+    const canvas = document.getElementById('matrix-canvas');
+    if (!canvas || prefersReducedMotion) return;
+
+    const ctx = canvas.getContext('2d');
+    const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}[]</>=+-_';
+    const matrixArray = matrix.split('');
+    const fontSize = 15;
+    let drops = [];
+
+    function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const columns = Math.ceil(window.innerWidth / fontSize);
+        drops = Array.from({ length: columns }, () => 1);
+    }
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(7, 8, 8, 0.08)';
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        ctx.fillStyle = 'rgba(116, 242, 189, 0.55)';
+        ctx.font = `${fontSize}px monospace`;
+
+        drops.forEach((drop, index) => {
+            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+            ctx.fillText(text, index * fontSize, drop * fontSize);
+
+            if (drop * fontSize > window.innerHeight && Math.random() > 0.985) {
+                drops[index] = 0;
+            }
+
+            drops[index]++;
+        });
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    window.setInterval(drawMatrix, 70);
+}
 
 function getTypingTexts() {
-    return currentLang === 'en' ? typingTextsEn : typingTextsPt;
+    return typingTexts[currentLang] || typingTexts.pt;
 }
 
 function typeText() {
     const typingElement = document.querySelector('.typing-text');
     if (!typingElement) return;
-    
-    const typingTexts = getTypingTexts();
-    if (!typingTexts || typingTexts.length === 0) return;
-    
-    const currentText = typingTexts[textIndex];
-    
+
+    const options = getTypingTexts();
+    const currentText = options[textIndex];
+
     if (isDeleting) {
         typingElement.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
@@ -93,22 +101,65 @@ function typeText() {
     }
 
     if (!isDeleting && charIndex === currentText.length) {
-        // Texto completo, pausa antes de deletar
         isDeleting = true;
-        typingTimeout = setTimeout(typeText, PAUSE_BEFORE_DELETE);
-    } else if (isDeleting && charIndex === 0) {
-        // Texto deletado, muda para próximo
+        typingTimeout = window.setTimeout(typeText, 1800);
+        return;
+    }
+
+    if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        textIndex = (textIndex + 1) % typingTexts.length;
-        typingTimeout = setTimeout(typeText, PAUSE_BEFORE_TYPE);
-    } else {
-        // Continua digitando ou deletando
-        const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
-        typingTimeout = setTimeout(typeText, speed);
+        textIndex = (textIndex + 1) % options.length;
+        typingTimeout = window.setTimeout(typeText, 450);
+        return;
+    }
+
+    typingTimeout = window.setTimeout(typeText, isDeleting ? 38 : 70);
+}
+
+function updateTypingText() {
+    const typingElement = document.querySelector('.typing-text');
+    if (!typingElement) return;
+
+    if (typingTimeout) {
+        window.clearTimeout(typingTimeout);
+    }
+
+    textIndex = 0;
+    charIndex = getTypingTexts()[0].length;
+    isDeleting = true;
+    typingElement.textContent = getTypingTexts()[0];
+
+    if (prefersReducedMotion) {
+        typingElement.textContent = getTypingTexts()[0];
+        return;
+    }
+
+    typingTimeout = window.setTimeout(typeText, 1800);
+}
+
+function updateLanguage() {
+    document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+
+    document.querySelectorAll('[data-lang-pt], [data-lang-en]').forEach((element) => {
+        const ptText = element.getAttribute('data-lang-pt');
+        const enText = element.getAttribute('data-lang-en');
+        const targetText = currentLang === 'pt' ? ptText : enText;
+
+        if (!targetText) return;
+
+        if (targetText.includes('<')) {
+            element.innerHTML = targetText;
+        } else {
+            element.textContent = targetText;
+        }
+    });
+
+    const langText = document.querySelector('.lang-text');
+    if (langText) {
+        langText.textContent = currentLang === 'pt' ? 'PT' : 'EN';
     }
 }
 
-// Language Toggle Function
 function toggleLanguage() {
     currentLang = currentLang === 'pt' ? 'en' : 'pt';
     localStorage.setItem('language', currentLang);
@@ -116,409 +167,197 @@ function toggleLanguage() {
     updateTypingText();
 }
 
-function updateLanguage() {
-    const elements = document.querySelectorAll('[data-lang-pt], [data-lang-en]');
-    elements.forEach(element => {
-        const ptText = element.getAttribute('data-lang-pt');
-        const enText = element.getAttribute('data-lang-en');
-        
-        if (ptText && enText) {
-            const targetText = currentLang === 'pt' ? ptText : enText;
-            
-            // Check if text contains HTML
-            if (targetText.includes('<strong>') || targetText.includes('<br>') || targetText.includes('<')) {
-                element.innerHTML = targetText;
-            } else {
-                element.textContent = targetText;
+function initNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    function closeMenu() {
+        navMenu?.classList.remove('active');
+        hamburger?.classList.remove('active');
+        hamburger?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    hamburger?.addEventListener('click', () => {
+        const isOpen = navMenu?.classList.toggle('active');
+        hamburger.classList.toggle('active', Boolean(isOpen));
+        hamburger.setAttribute('aria-expanded', String(Boolean(isOpen)));
+        document.body.classList.toggle('menu-open', Boolean(isOpen));
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (!target) return;
+
+            event.preventDefault();
+            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+            closeMenu();
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenu();
+        }
+    });
+}
+
+function initActiveNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveLink() {
+        const offset = window.scrollY + 140;
+        let current = 'home';
+
+        sections.forEach((section) => {
+            if (offset >= section.offsetTop) {
+                current = section.getAttribute('id');
             }
-        }
-    });
-    
-    // Update language toggle button
-    const langText = document.querySelector('.lang-text');
-    if (langText) {
-        langText.textContent = currentLang === 'pt' ? 'PT' : 'EN';
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
     }
+
+    setActiveLink();
+    window.addEventListener('scroll', setActiveLink);
 }
 
-function updateTypingText() {
-    // Limpa timeout anterior se existir
-    if (typingTimeout) {
-        clearTimeout(typingTimeout);
-        typingTimeout = null;
+function initRevealAnimations() {
+    const revealItems = document.querySelectorAll('section, .timeline-item, .project-card, .skill-category');
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        revealItems.forEach((item) => item.classList.add('visible'));
+        return;
     }
-    
-    const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
-    
-    textIndex = 0;
-    charIndex = 0;
-    isDeleting = false;
-    typingElement.textContent = '';
-    
-    // Inicia o efeito após um pequeno delay
-    setTimeout(() => {
-        typeText();
-    }, 300);
-}
 
-// Language toggle will be initialized in the main DOMContentLoaded below
-
-// Navigation Scroll Effect
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-        
-        // Close mobile menu if open
-        const navMenu = document.querySelector('.nav-menu');
-        navMenu.classList.remove('active');
-    });
-});
-
-// Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Scroll Animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
             entry.target.classList.add('visible');
-        }
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -80px 0px'
     });
-}, observerOptions);
 
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
+    revealItems.forEach((item) => {
+        item.classList.add('fade-in');
+        observer.observe(item);
+    });
+}
 
-// Skill Bars Animation
-const skillBars = document.querySelectorAll('.skill-progress');
+function initSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-progress');
 
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        skillBars.forEach((bar) => {
+            bar.style.width = `${bar.getAttribute('data-progress')}%`;
+        });
+        return;
+    }
+
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
             const progress = entry.target;
-            const progressValue = progress.getAttribute('data-progress');
-            progress.style.width = progressValue + '%';
+            progress.style.width = `${progress.getAttribute('data-progress')}%`;
             skillObserver.unobserve(progress);
-        }
-    });
-}, { threshold: 0.5 });
+        });
+    }, { threshold: 0.5 });
 
-skillBars.forEach(bar => {
-    skillObserver.observe(bar);
-});
+    skillBars.forEach((bar) => skillObserver.observe(bar));
+}
 
-// Timeline Items Animation
-const timelineItems = document.querySelectorAll('.timeline-item');
+function loadProjectImage(imageElement) {
+    const imageUrl = imageElement.getAttribute('data-image');
+    if (!imageUrl) return;
 
-const timelineObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateX(0)';
-            }, index * 200);
-            timelineObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
+    const image = new Image();
+    image.onload = () => {
+        imageElement.style.backgroundImage = `url("${imageUrl}")`;
+        imageElement.classList.add('loaded');
+    };
+    image.onerror = () => {
+        imageElement.classList.add('error');
+    };
+    image.src = imageUrl;
+}
 
-timelineItems.forEach(item => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-50px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    timelineObserver.observe(item);
-});
+function initProjectImages() {
+    document.querySelectorAll('.project-image[data-image]').forEach(loadProjectImage);
+}
 
-// Project Cards Animation
-const projectCards = document.querySelectorAll('.project-card');
+function showFormMessage(message, type) {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
 
-const projectObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 150);
-            projectObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
+    const existingMessage = contactForm.querySelector('.form-message');
+    existingMessage?.remove();
 
-projectCards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    projectObserver.observe(card);
-});
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message form-message-${type}`;
+    messageDiv.textContent = message;
 
-// Contact Form Handler with Mailto
-const contactForm = document.getElementById('contactForm');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    contactForm.insertBefore(messageDiv, submitButton);
 
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
+    window.setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.textContent;
-        
-        // Coleta os dados do formulário
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-        
-        // Desabilita o botão e mostra loading
+
         submitButton.disabled = true;
-        submitButton.textContent = 'Abrindo email...';
-        
-        // Prepara o mailto
-        const subject = encodeURIComponent(`Contato do Portfólio - ${name}`);
+        submitButton.textContent = translate('loadingEmail');
+
+        const subject = encodeURIComponent(`Contato do portfolio - ${name}`);
         const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`);
-        const mailtoLink = `mailto:heryckmota@gmail.com?subject=${subject}&body=${body}`;
-        
-        // Abre o cliente de email
-        window.location.href = mailtoLink;
-        
-        // Mostra mensagem de sucesso
-        showFormMessage('Redirecionando para seu cliente de email...', 'success');
-        
-        // Reseta o formulário após um delay
-        setTimeout(() => {
+
+        window.location.href = `mailto:heryckmota@gmail.com?subject=${subject}&body=${body}`;
+        showFormMessage(translate('emailSuccess'), 'success');
+
+        window.setTimeout(() => {
             contactForm.reset();
-            resetFormLabels();
             submitButton.disabled = false;
             submitButton.textContent = originalButtonText;
         }, 2000);
     });
 }
 
-// Função para mostrar mensagens de feedback
-function showFormMessage(message, type) {
-    // Remove mensagem anterior se existir
-    const existingMessage = document.querySelector('.form-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
-    // Cria nova mensagem
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message form-message-${type}`;
-    messageDiv.textContent = message;
-    
-    // Insere antes do botão de submit
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    contactForm.insertBefore(messageDiv, submitButton);
-    
-    // Remove a mensagem após 5 segundos
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 5000);
-}
-
-// Função para resetar labels do formulário
-function resetFormLabels() {
-    if (contactForm) {
-        contactForm.querySelectorAll('label').forEach(label => {
-            label.style.top = '1rem';
-            label.style.left = '1rem';
-            label.style.fontSize = '1rem';
-            label.style.color = 'var(--text-secondary)';
-            label.style.background = 'transparent';
-            label.style.padding = '0';
-        });
-    }
-}
-
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - scrolled / 500;
-    }
-});
-
-// Cursor Glow Effect (optional enhancement)
-document.addEventListener('mousemove', (e) => {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    document.body.appendChild(cursor);
-    
-    setTimeout(() => {
-        cursor.remove();
-    }, 300);
-});
-
-// Add glow effect styles dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .cursor-glow {
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(0, 255, 65, 0.5) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        animation: cursorFade 0.3s ease-out;
-    }
-    
-    @keyframes cursorFade {
-        0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        100% {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(2);
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Tech Items Hover Effect
-document.querySelectorAll('.tech-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px) scale(1.05)';
-    });
-    
-    item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Active Navigation Link Highlighting
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Add active state style
-const activeStyle = document.createElement('style');
-activeStyle.textContent = `
-    .nav-link.active {
-        color: var(--matrix-green) !important;
-    }
-    
-    .nav-link.active::after {
-        width: 100% !important;
-    }
-`;
-document.head.appendChild(activeStyle);
-
-// Load project images dynamically
-function loadProjectImage(imageElement) {
-    const imageUrl = imageElement.getAttribute('data-image');
-    if (!imageUrl) return;
-    
-    const img = new Image();
-    img.onload = function() {
-        imageElement.style.backgroundImage = `url('${imageUrl}')`;
-        imageElement.classList.add('loaded');
-    };
-    img.onerror = function() {
-        // Image failed to load, placeholder will remain visible
-        imageElement.classList.add('error');
-    };
-    img.src = imageUrl;
-}
-
-// Load all project images and initialize language
 document.addEventListener('DOMContentLoaded', () => {
-    // Load all project images
-    const projectImages = document.querySelectorAll('.project-image[data-image]');
-    projectImages.forEach(imageElement => {
-        loadProjectImage(imageElement);
-    });
-    
-    // Initialize language system
-    if (typeof updateLanguage === 'function' && document.querySelector('.lang-text')) {
-        const langText = document.querySelector('.lang-text');
-        if (!langText.textContent) {
-            updateLanguage();
-        }
-    }
-    
-    // Inicia o efeito de digitação após um delay para garantir que o DOM está pronto
-    setTimeout(() => {
-        const typingElement = document.querySelector('.typing-text');
-        if (typingElement && !typingElement.textContent) {
-            typeText();
-        }
-    }, 500);
-    
-    // Ensure language toggle is set up
-    const langToggle = document.getElementById('languageToggle');
-    if (langToggle && !langToggle.hasAttribute('data-listener')) {
-        langToggle.setAttribute('data-listener', 'true');
-        langToggle.addEventListener('click', toggleLanguage);
-    }
-});
+    updateLanguage();
+    updateTypingText();
+    initMatrix();
+    initNavigation();
+    initActiveNavigation();
+    initRevealAnimations();
+    initSkillBars();
+    initProjectImages();
+    initContactForm();
 
+    document.getElementById('languageToggle')?.addEventListener('click', toggleLanguage);
+});
