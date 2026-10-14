@@ -1,170 +1,112 @@
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Preencha com o ID do Pixel da Meta para ligar a medição (ex.: '123456789012345').
+// Vazio: nenhum cookie é usado e o aviso de cookies não aparece.
+const META_PIXEL_ID = '';
 
-let currentLang = localStorage.getItem('language') === 'en' ? 'en' : 'pt';
-let typingTimeout = null;
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+const WHATSAPP_NUMBER = '5562985583519';
+const DEFAULT_WHATSAPP_TEXT = 'Oi, Heryck! Vi o seu site e quero conversar sobre um sistema para a minha empresa.';
+const CONSENT_KEY = 'cookie-consent';
+const CAMPAIGN_KEY = 'campaign-ref';
 
-const typingTexts = {
-    pt: [
-        'Laravel, PHP e Livewire',
-        'APIs, ERPs e integrações',
-        'Vue.js, Node.js e TypeScript',
-        'Arquitetura para sistemas reais'
-    ],
-    en: [
-        'Laravel, PHP, and Livewire',
-        'APIs, ERPs, and integrations',
-        'Vue.js, Node.js, and TypeScript',
-        'Architecture for real systems'
-    ]
-};
+let cookieBannerOpen = false;
+let refreshStickyCta = () => {};
 
-const uiText = {
-    loadingEmail: {
-        pt: 'Abrindo e-mail...',
-        en: 'Opening email...'
-    },
-    emailSuccess: {
-        pt: 'Redirecionando para seu cliente de e-mail...',
-        en: 'Redirecting to your email client...'
+function readStorage(storage, key) {
+    try {
+        return storage.getItem(key);
+    } catch (error) {
+        return null;
     }
-};
-
-function translate(key) {
-    return uiText[key]?.[currentLang] || uiText[key]?.pt || '';
 }
 
-function initMatrix() {
-    const canvas = document.getElementById('matrix-canvas');
-    if (!canvas || prefersReducedMotion) return;
+function writeStorage(storage, key, value) {
+    try {
+        storage.setItem(key, value);
+    } catch (error) {
+        // Navegação privada ou armazenamento bloqueado: segue sem guardar.
+    }
+}
 
-    const ctx = canvas.getContext('2d');
-    const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}[]</>=+-_';
-    const matrixArray = matrix.split('');
-    const fontSize = 15;
-    let drops = [];
+// Guarda de qual anúncio a visita veio, para aparecer na mensagem do WhatsApp.
+function getCampaignRef() {
+    const params = new URLSearchParams(window.location.search);
+    const parts = ['utm_source', 'utm_campaign', 'utm_content']
+        .map((name) => (params.get(name) || '').replace(/[^\w.-]/g, '').slice(0, 40))
+        .filter(Boolean);
 
-    function resizeCanvas() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        const columns = Math.ceil(window.innerWidth / fontSize);
-        drops = Array.from({ length: columns }, () => 1);
+    if (parts.length) {
+        const ref = parts.join('/');
+        writeStorage(window.sessionStorage, CAMPAIGN_KEY, ref);
+        return ref;
     }
 
-    function drawMatrix() {
-        ctx.fillStyle = 'rgba(7, 8, 8, 0.08)';
-        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-        ctx.fillStyle = 'rgba(116, 242, 189, 0.55)';
-        ctx.font = `${fontSize}px monospace`;
+    return readStorage(window.sessionStorage, CAMPAIGN_KEY) || '';
+}
 
-        drops.forEach((drop, index) => {
-            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-            ctx.fillText(text, index * fontSize, drop * fontSize);
+function buildWhatsAppUrl(text, ref) {
+    const message = ref ? `${text}\n\n(ref: ${ref})` : text;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
 
-            if (drop * fontSize > window.innerHeight && Math.random() > 0.985) {
-                drops[index] = 0;
+function initWhatsAppLinks() {
+    const ref = getCampaignRef();
+
+    document.querySelectorAll('a[data-wa]').forEach((link) => {
+        const text = link.getAttribute('data-wa-text') || DEFAULT_WHATSAPP_TEXT;
+        link.href = buildWhatsAppUrl(text, ref);
+
+        link.addEventListener('click', () => {
+            if (typeof window.fbq === 'function') {
+                window.fbq('track', 'Contact', { content_name: link.getAttribute('data-wa') });
             }
-
-            drops[index]++;
         });
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    window.setInterval(drawMatrix, 70);
-}
-
-function getTypingTexts() {
-    return typingTexts[currentLang] || typingTexts.pt;
-}
-
-function typeText() {
-    const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
-
-    const options = getTypingTexts();
-    const currentText = options[textIndex];
-
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typingElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-    }
-
-    if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true;
-        typingTimeout = window.setTimeout(typeText, 1800);
-        return;
-    }
-
-    if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % options.length;
-        typingTimeout = window.setTimeout(typeText, 450);
-        return;
-    }
-
-    typingTimeout = window.setTimeout(typeText, isDeleting ? 38 : 70);
-}
-
-function updateTypingText() {
-    const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
-
-    if (typingTimeout) {
-        window.clearTimeout(typingTimeout);
-    }
-
-    textIndex = 0;
-    charIndex = getTypingTexts()[0].length;
-    isDeleting = true;
-    typingElement.textContent = getTypingTexts()[0];
-
-    if (prefersReducedMotion) {
-        typingElement.textContent = getTypingTexts()[0];
-        return;
-    }
-
-    typingTimeout = window.setTimeout(typeText, 1800);
-}
-
-function updateLanguage() {
-    document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
-
-    document.querySelectorAll('[data-lang-pt], [data-lang-en]').forEach((element) => {
-        const ptText = element.getAttribute('data-lang-pt');
-        const enText = element.getAttribute('data-lang-en');
-        const targetText = currentLang === 'pt' ? ptText : enText;
-
-        if (!targetText) return;
-
-        if (targetText.includes('<')) {
-            element.innerHTML = targetText;
-        } else {
-            element.textContent = targetText;
-        }
     });
-
-    const langText = document.querySelector('.lang-text');
-    if (langText) {
-        langText.textContent = currentLang === 'pt' ? 'PT' : 'EN';
-    }
 }
 
-function toggleLanguage() {
-    currentLang = currentLang === 'pt' ? 'en' : 'pt';
-    localStorage.setItem('language', currentLang);
-    updateLanguage();
-    updateTypingText();
+function loadMetaPixel() {
+    if (!META_PIXEL_ID || typeof window.fbq === 'function') return;
+
+    /* eslint-disable */
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+
+    window.fbq('init', META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+}
+
+function initCookieConsent() {
+    const banner = document.getElementById('cookieBanner');
+    if (!META_PIXEL_ID) return;
+
+    const saved = readStorage(window.localStorage, CONSENT_KEY);
+    if (saved === 'aceito') {
+        loadMetaPixel();
+        return;
+    }
+    if (saved === 'recusado' || !banner) return;
+
+    banner.hidden = false;
+    cookieBannerOpen = true;
+    refreshStickyCta();
+
+    banner.querySelectorAll('[data-cookie]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const accepted = button.getAttribute('data-cookie') === 'aceitar';
+            writeStorage(window.localStorage, CONSENT_KEY, accepted ? 'aceito' : 'recusado');
+            if (accepted) loadMetaPixel();
+
+            banner.hidden = true;
+            cookieBannerOpen = false;
+            refreshStickyCta();
+        });
+    });
 }
 
 function initNavigation() {
@@ -176,30 +118,24 @@ function initNavigation() {
         navMenu?.classList.remove('active');
         hamburger?.classList.remove('active');
         hamburger?.setAttribute('aria-expanded', 'false');
+        hamburger?.setAttribute('aria-label', 'Abrir menu');
         document.body.classList.remove('menu-open');
     }
 
     window.addEventListener('scroll', () => {
-        if (!navbar) return;
-        navbar.classList.toggle('scrolled', window.scrollY > 80);
-    });
+        navbar?.classList.toggle('scrolled', window.scrollY > 24);
+    }, { passive: true });
 
     hamburger?.addEventListener('click', () => {
-        const isOpen = navMenu?.classList.toggle('active');
-        hamburger.classList.toggle('active', Boolean(isOpen));
-        hamburger.setAttribute('aria-expanded', String(Boolean(isOpen)));
-        document.body.classList.toggle('menu-open', Boolean(isOpen));
+        const isOpen = Boolean(navMenu?.classList.toggle('active'));
+        hamburger.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        document.body.classList.toggle('menu-open', isOpen);
     });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', (event) => {
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (!target) return;
-
-            event.preventDefault();
-            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-            closeMenu();
-        });
+        anchor.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('keydown', (event) => {
@@ -209,155 +145,69 @@ function initNavigation() {
     });
 }
 
-function initActiveNavigation() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+// No celular, o botão fixo aparece depois do topo e some na chamada final.
+function initStickyCta() {
+    const stickyCta = document.querySelector('.sticky-cta');
+    const hero = document.getElementById('inicio');
+    const finalCta = document.getElementById('contato');
+    if (!stickyCta || !hero || !('IntersectionObserver' in window)) return;
 
-    function setActiveLink() {
-        const offset = window.scrollY + 140;
-        let current = 'home';
+    let heroVisible = true;
+    let finalVisible = false;
 
-        sections.forEach((section) => {
-            if (offset >= section.offsetTop) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-        });
-    }
-
-    setActiveLink();
-    window.addEventListener('scroll', setActiveLink);
-}
-
-function initRevealAnimations() {
-    const revealItems = document.querySelectorAll('section, .timeline-item, .project-card, .skill-category');
-
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-        revealItems.forEach((item) => item.classList.add('visible'));
-        return;
-    }
+    refreshStickyCta = () => {
+        stickyCta.hidden = heroVisible || finalVisible || cookieBannerOpen;
+    };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            if (entry.target === hero) heroVisible = entry.isIntersecting;
+            if (entry.target === finalCta) finalVisible = entry.isIntersecting;
         });
-    }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -80px 0px'
+        refreshStickyCta();
+    }, { threshold: 0.15 });
+
+    observer.observe(hero);
+    if (finalCta) observer.observe(finalCta);
+}
+
+// Amplia as telas dos projetos sem sair da página.
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox || typeof lightbox.showModal !== 'function') return;
+
+    const image = lightbox.querySelector('img');
+    const caption = lightbox.querySelector('.lightbox-caption');
+
+    document.querySelectorAll('.shot a').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const figure = link.closest('.shot');
+            const thumb = link.querySelector('img');
+
+            image.src = link.href;
+            image.alt = thumb?.alt || '';
+            image.classList.toggle('is-phone', Boolean(figure?.classList.contains('shot-phone')));
+            caption.textContent = figure?.querySelector('figcaption')?.textContent || '';
+            lightbox.showModal();
+        });
     });
 
-    revealItems.forEach((item) => {
-        item.classList.add('fade-in');
-        observer.observe(item);
+    lightbox.addEventListener('click', (event) => {
+        if (event.target.closest('.lightbox-close') || !event.target.closest('img')) {
+            lightbox.close();
+        }
     });
-}
 
-function initSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-        skillBars.forEach((bar) => {
-            bar.style.width = `${bar.getAttribute('data-progress')}%`;
-        });
-        return;
-    }
-
-    const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            const progress = entry.target;
-            progress.style.width = `${progress.getAttribute('data-progress')}%`;
-            skillObserver.unobserve(progress);
-        });
-    }, { threshold: 0.5 });
-
-    skillBars.forEach((bar) => skillObserver.observe(bar));
-}
-
-function loadProjectImage(imageElement) {
-    const imageUrl = imageElement.getAttribute('data-image');
-    if (!imageUrl) return;
-
-    const image = new Image();
-    image.onload = () => {
-        imageElement.style.backgroundImage = `url("${imageUrl}")`;
-        imageElement.classList.add('loaded');
-    };
-    image.onerror = () => {
-        imageElement.classList.add('error');
-    };
-    image.src = imageUrl;
-}
-
-function initProjectImages() {
-    document.querySelectorAll('.project-image[data-image]').forEach(loadProjectImage);
-}
-
-function showFormMessage(message, type) {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-
-    const existingMessage = contactForm.querySelector('.form-message');
-    existingMessage?.remove();
-
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message form-message-${type}`;
-    messageDiv.textContent = message;
-
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    contactForm.insertBefore(messageDiv, submitButton);
-
-    window.setTimeout(() => {
-        messageDiv.remove();
-    }, 5000);
-}
-
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        submitButton.disabled = true;
-        submitButton.textContent = translate('loadingEmail');
-
-        const subject = encodeURIComponent(`Contato do portfolio - ${name}`);
-        const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`);
-
-        window.location.href = `mailto:heryckmota@gmail.com?subject=${subject}&body=${body}`;
-        showFormMessage(translate('emailSuccess'), 'success');
-
-        window.setTimeout(() => {
-            contactForm.reset();
-            submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
-        }, 2000);
+    lightbox.addEventListener('close', () => {
+        image.removeAttribute('src');
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateLanguage();
-    updateTypingText();
-    initMatrix();
     initNavigation();
-    initActiveNavigation();
-    initRevealAnimations();
-    initSkillBars();
-    initProjectImages();
-    initContactForm();
-
-    document.getElementById('languageToggle')?.addEventListener('click', toggleLanguage);
+    initWhatsAppLinks();
+    initStickyCta();
+    initCookieConsent();
+    initLightbox();
 });

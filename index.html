@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heryck Mota | Desenvolvedor Full Stack</title>
-    <meta name="description" content="Portfolio de Heryck Mota, desenvolvedor full stack especializado em Laravel, PHP, Vue.js, Node.js, integrações e sistemas web sob medida.">
+    <title>Heryck Mota | Sistemas e aplicativos sob medida</title>
+    <meta name="description" content="Construo o sistema e o aplicativo do jeito que a sua empresa trabalha: pedidos, produção, agenda, equipe. Você fala direto comigo, do primeiro rascunho ao sistema no ar.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Heryck Mota | Sistemas e aplicativos sob medida">
+    <meta property="og:description" content="Da planilha para um sistema seu, entregue por fases, direto com quem constrói.">
+    <meta property="og:image" content="https://heryckmbs.github.io/heryck/assets/og-heryck.jpg">
+    <meta name="theme-color" content="#070808">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <nav class="navbar" aria-label="Navegação principal">
         <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Heryck Mota">
+            <a href="#inicio" class="logo" aria-label="Heryck Mota">
                 <span class="logo-mark">HM</span>
                 <span class="logo-copy">
                     <span class="logo-name">Heryck Mota</span>
-                    <span class="logo-role">Full Stack Developer</span>
+                    <span class="logo-role">Sistemas sob medida</span>
                 </span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link" data-lang-pt="Início" data-lang-en="Home">Início</a></li>
-                <li><a href="#about" class="nav-link" data-lang-pt="Sobre" data-lang-en="About">Sobre</a></li>
-                <li><a href="#experience" class="nav-link" data-lang-pt="Experiência" data-lang-en="Experience">Experiência</a></li>
-                <li><a href="#projects" class="nav-link" data-lang-pt="Cases" data-lang-en="Cases">Cases</a></li>
-                <li><a href="#skills" class="nav-link" data-lang-pt="Stack" data-lang-en="Stack">Stack</a></li>
-                <li><a href="#contact" class="nav-link nav-link-cta" data-lang-pt="Contato" data-lang-en="Contact">Contato</a></li>
+                <li><a href="#solucoes" class="nav-link">Como ajudo</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                <li><a href="#processo" class="nav-link">Como funciona</a></li>
+                <li><a href="#duvidas" class="nav-link">Dúvidas</a></li>
             </ul>
 
             <div class="nav-actions">
-                <button class="language-toggle" id="languageToggle" type="button" aria-label="Alternar idioma">
-                    <span class="lang-text">PT</span>
-                </button>
+                <a class="btn btn-whatsapp btn-small" data-wa="menu" href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20sistema%20para%20a%20minha%20empresa." target="_blank" rel="noopener">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                    <span>WhatsApp</span>
+                </a>
                 <button class="hamburger" type="button" aria-label="Abrir menu" aria-controls="navMenu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -47,610 +52,447 @@
         </div>
     </nav>
 
-    <main>
-        <section id="home" class="hero">
+    <main id="conteudo">
+        <section id="inicio" class="hero">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <p class="eyebrow" data-lang-pt="Desenvolvedor Full Stack no Brasil" data-lang-en="Full Stack Developer in Brazil">Desenvolvedor Full Stack no Brasil</p>
-                    <h1>Heryck Mota</h1>
-                    <p class="hero-lead" data-lang-pt="Construo sistemas web, ERPs, integrações e produtos digitais com foco em clareza, performance e evolução contínua." data-lang-en="I build web systems, ERPs, integrations, and digital products with a focus on clarity, performance, and continuous evolution.">
-                        Construo sistemas web, ERPs, integrações e produtos digitais com foco em clareza, performance e evolução contínua.
+                    <p class="eyebrow">Sistemas e aplicativos sob medida</p>
+                    <h1>Sua empresa cresceu. A planilha não acompanhou.</h1>
+                    <p class="hero-lead">
+                        Eu construo o sistema e o aplicativo do jeito que a sua operação trabalha: pedidos, produção, agenda, equipe.
+                        Você fala direto comigo, do primeiro rascunho ao sistema no ar.
                     </p>
-
-                    <div class="hero-subtitle" aria-live="polite">
-                        <span class="typing-text"></span>
-                        <span class="cursor" aria-hidden="true">|</span>
-                    </div>
 
                     <div class="hero-actions">
-                        <a href="#contact" class="btn btn-primary" data-lang-pt="Conversar sobre projeto" data-lang-en="Discuss a project">Conversar sobre projeto</a>
-                        <a href="#projects" class="btn btn-secondary" data-lang-pt="Ver cases" data-lang-en="View cases">Ver cases</a>
+                        <a class="btn btn-whatsapp" data-wa="topo" href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20sistema%20para%20a%20minha%20empresa." target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                            <span>Conversar no WhatsApp</span>
+                        </a>
+                        <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
                     </div>
 
-                    <div class="hero-metrics" aria-label="Resumo profissional">
-                        <div class="metric-card">
-                            <strong>4+</strong>
-                            <span data-lang-pt="anos criando software" data-lang-en="years building software">anos criando software</span>
-                        </div>
-                        <div class="metric-card">
-                            <strong>5</strong>
-                            <span data-lang-pt="cases destacados" data-lang-en="featured cases">cases destacados</span>
-                        </div>
-                        <div class="metric-card">
-                            <strong>10+</strong>
-                            <span data-lang-pt="tecnologias no stack" data-lang-en="technologies in the stack">tecnologias no stack</span>
-                        </div>
-                    </div>
+                    <ul class="hero-proof">
+                        <li>Desenvolvedor desde 2022</li>
+                        <li>Aplicativo publicado na App Store e no Google Play</li>
+                        <li>Escopo e preço fechados antes do código</li>
+                    </ul>
                 </div>
 
-            </div>
-
-            <div class="container proof-strip" aria-label="Áreas de atuação">
-                <span data-lang-pt="ERPs e operações críticas" data-lang-en="ERPs and critical operations">ERPs e operações críticas</span>
-                <span data-lang-pt="Integrações, filas e automações" data-lang-en="Integrations, queues, and automation">Integrações, filas e automações</span>
-                <span data-lang-pt="Dashboards, relatórios e gestão" data-lang-en="Dashboards, reports, and management">Dashboards, relatórios e gestão</span>
+                <figure class="hero-photo">
+                    <img src="assets/heryck.webp" alt="Heryck Mota, desenvolvedor de software" width="900" height="1350" fetchpriority="high">
+                    <figcaption>
+                        <strong>Heryck Mota</strong>
+                        <span>Quem conversa com você é quem constrói.</span>
+                    </figcaption>
+                </figure>
             </div>
         </section>
 
-        <section id="about" class="about section-block">
+        <section id="solucoes" class="section-block">
             <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">01 / <span data-lang-pt="Sobre" data-lang-en="About">Sobre</span></p>
-                    <h2 data-lang-pt="Desenvolvimento de ponta a ponta, com visão de produto." data-lang-en="End-to-end development with a product mindset.">Desenvolvimento de ponta a ponta, com visão de produto.</h2>
-                    <p data-lang-pt="Atuo desde o entendimento do problema até arquitetura, implementação, entrega e evolução. Minha força está em transformar requisitos complexos em sistemas que usuários conseguem operar com confiança." data-lang-en="I work from problem discovery through architecture, implementation, delivery, and iteration. My strength is turning complex requirements into systems users can operate with confidence.">
-                        Atuo desde o entendimento do problema até arquitetura, implementação, entrega e evolução. Minha força está em transformar requisitos complexos em sistemas que usuários conseguem operar com confiança.
-                    </p>
-                </div>
+                <header class="section-head">
+                    <p class="eyebrow">Como ajudo</p>
+                    <h2>Você se reconhece em alguma destas situações?</h2>
+                </header>
 
-                <div class="about-layout">
-                    <div class="about-narrative">
-                        <p data-lang-pt="<strong>Transformo problemas em soluções sustentáveis.</strong> Cada projeto começa com diagnóstico, priorização e clareza de objetivo. Depois vem a arquitetura, o código e a entrega com atenção a manutenção, segurança e experiência de uso." data-lang-en="<strong>I turn problems into sustainable solutions.</strong> Every project starts with diagnosis, prioritization, and a clear objective. Then comes architecture, code, and delivery with attention to maintenance, security, and user experience.">
-                            <strong>Transformo problemas em soluções sustentáveis.</strong> Cada projeto começa com diagnóstico, priorização e clareza de objetivo. Depois vem a arquitetura, o código e a entrega com atenção a manutenção, segurança e experiência de uso.
-                        </p>
-                        <p data-lang-pt="Tenho experiência com PHP, Laravel, Livewire, Node.js, NestJS, TypeScript, Vue.js, bancos relacionais, Docker, AWS e integrações com APIs de terceiros." data-lang-en="I have experience with PHP, Laravel, Livewire, Node.js, NestJS, TypeScript, Vue.js, relational databases, Docker, AWS, and third-party API integrations.">
-                            Tenho experiência com PHP, Laravel, Livewire, Node.js, NestJS, TypeScript, Vue.js, bancos relacionais, Docker, AWS e integrações com APIs de terceiros.
-                        </p>
-                    </div>
-
-                    <div class="principles-grid" aria-label="Forma de trabalho">
-                        <article class="principle-card">
-                            <span class="card-index">01</span>
-                            <h3 data-lang-pt="Diagnóstico antes do código" data-lang-en="Diagnosis before code">Diagnóstico antes do código</h3>
-                            <p data-lang-pt="Entendo regra de negócio, usuários, restrições e riscos antes de propor arquitetura." data-lang-en="I understand business rules, users, constraints, and risks before proposing architecture.">Entendo regra de negócio, usuários, restrições e riscos antes de propor arquitetura.</p>
-                        </article>
-                        <article class="principle-card">
-                            <span class="card-index">02</span>
-                            <h3 data-lang-pt="Entrega que escala" data-lang-en="Delivery that scales">Entrega que escala</h3>
-                            <p data-lang-pt="Priorizo sistemas manuteníveis, claros e preparados para crescer sem virar dívida técnica." data-lang-en="I prioritize maintainable, clear systems prepared to grow without becoming technical debt.">Priorizo sistemas manuteníveis, claros e preparados para crescer sem virar dívida técnica.</p>
-                        </article>
-                        <article class="principle-card">
-                            <span class="card-index">03</span>
-                            <h3 data-lang-pt="Experiência operacional" data-lang-en="Operational experience">Experiência operacional</h3>
-                            <p data-lang-pt="Penso nas telas, fluxos e relatórios para que o software ajude no trabalho real." data-lang-en="I think through screens, flows, and reports so the software supports real work.">Penso nas telas, fluxos e relatórios para que o software ajude no trabalho real.</p>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="tech-stack" aria-label="Tecnologias principais">
-                    <span>PHP</span>
-                    <span>Laravel</span>
-                    <span>Livewire</span>
-                    <span>Node.js</span>
-                    <span>NestJS</span>
-                    <span>Vue.js</span>
-                    <span>TypeScript</span>
-                    <span>PostgreSQL</span>
-                    <span>MySQL</span>
-                    <span>Docker</span>
-                    <span>AWS</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="experience section-block section-muted">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">02 / <span data-lang-pt="Experiência" data-lang-en="Experience">Experiência</span></p>
-                    <h2 data-lang-pt="Atuação em produtos, ERPs, integrações e sistemas de gestão." data-lang-en="Work across products, ERPs, integrations, and management systems.">Atuação em produtos, ERPs, integrações e sistemas de gestão.</h2>
-                    <p data-lang-pt="Uma trajetória com projetos para responsabilidade social, comércio exterior, energia, laboratórios, imóveis, associações e operações comerciais." data-lang-en="A career path spanning projects for social responsibility, foreign trade, energy, laboratories, real estate, associations, and commercial operations.">
-                        Uma trajetória com projetos para responsabilidade social, comércio exterior, energia, laboratórios, imóveis, associações e operações comerciais.
-                    </p>
-                </div>
-
-                <div class="timeline">
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Abr 2025 - Presente" data-lang-en="Apr 2025 - Present">Abr 2025 - Presente</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
-                            <h4 class="timeline-company">SENAI Soluções Digitais</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento e manutenção de aplicações para o setor de Responsabilidade Social, utilizando Laravel e Livewire como frameworks principais. Participação em cerimônias Scrum, planejamento e entrega de soluções escaláveis." data-lang-en="Development and maintenance of applications for the Social Responsibility sector, using Laravel and Livewire as core frameworks. Participation in Scrum ceremonies, planning, and delivery of scalable solutions.">
-                                Desenvolvimento e manutenção de aplicações para o setor de Responsabilidade Social, utilizando Laravel e Livewire como frameworks principais. Participação em cerimônias Scrum, planejamento e entrega de soluções escaláveis.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>PHP</span>
-                                <span>Laravel</span>
-                                <span>Livewire</span>
-                                <span>Docker</span>
-                                <span>PostgreSQL</span>
-                            </div>
-                        </div>
+                <div class="card-grid">
+                    <article class="offer-card">
+                        <p class="offer-quote">“Minha operação vive em planilha e grupo de WhatsApp.”</p>
+                        <h3>Sistema de gestão sob medida</h3>
+                        <p>Pedido, produção, estoque, entrega e equipe em um lugar só. Cada pessoa vê apenas a própria tela, e você enxerga o dia inteiro.</p>
+                        <a class="text-link" data-wa="gestao" data-wa-text="Oi, Heryck! Vi o seu site e quero conversar sobre um sistema de gestão sob medida." href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20sistema%20de%20gest%C3%A3o%20sob%20medida." target="_blank" rel="noopener">Quero organizar a operação</a>
                     </article>
 
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Jan 2025 - Ago 2025" data-lang-en="Jan 2025 - Aug 2025">Jan 2025 - Ago 2025</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack Pleno" data-lang-en="Mid-level Full Stack Developer">Desenvolvedor Full Stack Pleno</h3>
-                            <h4 class="timeline-company">China Fácil</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento e manutenção de plataforma de e-commerce de exportação, com features complexas em Laravel, integração com APIs externas e melhorias de experiência com Vue.js." data-lang-en="Development and maintenance of an export e-commerce platform, with complex Laravel features, external API integrations, and user experience improvements with Vue.js.">
-                                Desenvolvimento e manutenção de plataforma de e-commerce de exportação, com features complexas em Laravel, integração com APIs externas e melhorias de experiência com Vue.js.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>Laravel</span>
-                                <span>Vue.js</span>
-                                <span>Docker</span>
-                                <span>MySQL</span>
-                                <span>PHP</span>
-                            </div>
-                        </div>
+                    <article class="offer-card">
+                        <p class="offer-quote">“Minha equipe trabalha na rua e precisa usar no celular.”</p>
+                        <h3>Aplicativo próprio</h3>
+                        <p>Android e iPhone ligados ao seu sistema. Funciona mesmo sem internet e envia tudo quando o sinal volta, sem perder nada.</p>
+                        <a class="text-link" data-wa="app" data-wa-text="Oi, Heryck! Vi o seu site e quero conversar sobre um aplicativo para a minha empresa." href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20aplicativo%20para%20a%20minha%20empresa." target="_blank" rel="noopener">Quero um aplicativo</a>
                     </article>
 
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Mar 2025 - Ago 2025" data-lang-en="Mar 2025 - Aug 2025">Mar 2025 - Ago 2025</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
-                            <h4 class="timeline-company">Nix International Control</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento de sistema para gerenciar processos de importação e exportação, com gestão de clientes, catálogos, cálculos automatizados e integração com API do Banco Central." data-lang-en="Development of a system to manage import and export processes, with customer management, catalogs, automated calculations, and Banco Central API integration.">
-                                Desenvolvimento de sistema para gerenciar processos de importação e exportação, com gestão de clientes, catálogos, cálculos automatizados e integração com API do Banco Central.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>PHP</span>
-                                <span>Laravel</span>
-                                <span>jQuery</span>
-                                <span>PostgreSQL</span>
-                                <span>AWS EC2</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Fev 2024 - Set 2024" data-lang-en="Feb 2024 - Sep 2024">Fev 2024 - Set 2024</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
-                            <h4 class="timeline-company">Bakery Nova Esperança</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento completo de sistema de gestão para padaria, com dashboards, estoque, pedidos, clientes e precificação diferenciada." data-lang-en="Full development of a bakery management system, with dashboards, inventory, orders, customers, and tiered pricing.">
-                                Desenvolvimento completo de sistema de gestão para padaria, com dashboards, estoque, pedidos, clientes e precificação diferenciada.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>PHP</span>
-                                <span>Laravel</span>
-                                <span>PostgreSQL</span>
-                                <span>AWS EC2</span>
-                                <span>jQuery</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Dez 2023 - Dez 2024" data-lang-en="Dec 2023 - Dec 2024">Dez 2023 - Dez 2024</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor Full Stack" data-lang-en="Full Stack Developer">Desenvolvedor Full Stack</h3>
-                            <h4 class="timeline-company">Norven</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento de sistemas para distribuição elétrica, com liderança técnica em projetos para grandes clientes, levantamento de requisitos, arquitetura e implementação." data-lang-en="Development of systems for electric distribution, with technical leadership in projects for major clients, requirements gathering, architecture, and implementation.">
-                                Desenvolvimento de sistemas para distribuição elétrica, com liderança técnica em projetos para grandes clientes, levantamento de requisitos, arquitetura e implementação.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>Laravel</span>
-                                <span>Vue.js</span>
-                                <span>Node.js</span>
-                                <span>NestJS</span>
-                                <span>TypeScript</span>
-                                <span>PostgreSQL</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Jun 2023 - Nov 2023" data-lang-en="Jun 2023 - Nov 2023">Jun 2023 - Nov 2023</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
-                            <h4 class="timeline-company">Laboratório Raça</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento de funcionalidades, manutenção de sistemas, processamento assíncrono, geração de PDFs, integrações externas e emissão de notas fiscais." data-lang-en="Feature development, system maintenance, asynchronous processing, PDF generation, external integrations, and invoice generation.">
-                                Desenvolvimento de funcionalidades, manutenção de sistemas, processamento assíncrono, geração de PDFs, integrações externas e emissão de notas fiscais.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>Laravel</span>
-                                <span>PHP</span>
-                                <span>MySQL</span>
-                                <span>jQuery</span>
-                                <span>Docker</span>
-                                <span>Bootstrap</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Jan 2023 - Jun 2023" data-lang-en="Jan 2023 - Jun 2023">Jan 2023 - Jun 2023</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software" data-lang-en="Software Developer">Desenvolvedor de Software</h3>
-                            <h4 class="timeline-company">Net Suprema Tecnologia da Informação</h4>
-                            <p class="timeline-description" data-lang-pt="Manutenção de sistemas legados para imóveis, institutos, sindicatos e cooperativas, com foco em consultas complexas, integração e PHP orientado a objetos." data-lang-en="Maintenance of legacy systems for real estate, institutes, unions, and cooperatives, focusing on complex queries, integration, and object-oriented PHP.">
-                                Manutenção de sistemas legados para imóveis, institutos, sindicatos e cooperativas, com foco em consultas complexas, integração e PHP orientado a objetos.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>Laravel</span>
-                                <span>PHP</span>
-                                <span>PostgreSQL</span>
-                                <span>jQuery</span>
-                                <span>OOP</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date" data-lang-pt="Jul 2022 - Jan 2023" data-lang-en="Jul 2022 - Jan 2023">Jul 2022 - Jan 2023</div>
-                            <h3 class="timeline-title" data-lang-pt="Desenvolvedor de Software - Estágio" data-lang-en="Software Developer Intern">Desenvolvedor de Software - Estágio</h3>
-                            <h4 class="timeline-company">ABL Prime</h4>
-                            <p class="timeline-description" data-lang-pt="Desenvolvimento web com PHP/Laravel e aplicações móveis com Flutter, integração com UAU/Globaltec, suporte via GLPI e manutenção de sistemas." data-lang-en="Web development with PHP/Laravel and mobile applications with Flutter, UAU/Globaltec integration, GLPI support, and system maintenance.">
-                                Desenvolvimento web com PHP/Laravel e aplicações móveis com Flutter, integração com UAU/Globaltec, suporte via GLPI e manutenção de sistemas.
-                            </p>
-                            <div class="timeline-tech">
-                                <span>Laravel</span>
-                                <span>PHP</span>
-                                <span>Flutter</span>
-                                <span>SQL Server</span>
-                                <span>Bootstrap</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
+                    <article class="offer-card">
+                        <p class="offer-quote">“Meu sistema travou e ninguém sabe mexer.”</p>
+                        <h3>Resgate de sistema</h3>
+                        <p>Feito em ferramenta sem código, ou deixado por quem sumiu. Eu assumo, coloco em ordem e levo os seus dados junto, conferidos.</p>
+                        <a class="text-link" data-wa="resgate" data-wa-text="Oi, Heryck! Vi o seu site. Tenho um sistema que travou e quero conversar." href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site.%20Tenho%20um%20sistema%20que%20travou%20e%20quero%20conversar." target="_blank" rel="noopener">Quero destravar meu sistema</a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="projects section-block">
+        <section id="projetos" class="section-block section-muted">
             <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">03 / <span data-lang-pt="Cases" data-lang-en="Cases">Cases</span></p>
-                    <h2 data-lang-pt="Projetos apresentados como prova de capacidade, não só como vitrine." data-lang-en="Projects presented as proof of capability, not just a gallery.">Projetos apresentados como prova de capacidade, não só como vitrine.</h2>
-                    <p data-lang-pt="Seleção de sistemas com regras de negócio reais, integrações, rotinas operacionais e interfaces para tomada de decisão." data-lang-en="A selection of systems with real business rules, integrations, operational routines, and interfaces for decision-making.">
-                        Seleção de sistemas com regras de negócio reais, integrações, rotinas operacionais e interfaces para tomada de decisão.
-                    </p>
-                </div>
+                <header class="section-head">
+                    <p class="eyebrow">Projetos</p>
+                    <h2>Sistemas que as pessoas usam para trabalhar todo dia.</h2>
+                </header>
 
-                <div class="projects-grid">
-                    <article class="project-card project-card-featured">
-                        <div class="project-image" data-image="image1.png">
-                            <div class="project-image-placeholder">
-                                <span>ERP Comércio Exterior</span>
-                            </div>
+                <article class="case">
+                    <div class="case-media case-media-wide">
+                        <img src="assets/case-esportes.webp" alt="Tela da súmula digital de basquete no tablet, com placar, titulares e reservas das duas equipes" width="1400" height="787" loading="lazy">
+                    </div>
+                    <div class="case-body">
+                        <p class="case-kicker">Competições esportivas · sistema, aplicativo e tablet</p>
+                        <h3>O campeonato inteiro, da inscrição à súmula, mesmo sem internet</h3>
+                        <p>O jogo era anotado em papel e o campeonato vivia em planilhas. Construí o portal de gestão, o aplicativo de atletas e dirigentes e a súmula digital que a mesa opera no tablet.</p>
+                        <ul class="case-proof">
+                            <li>Aplicativo +Esportes publicado na App Store e no Google Play</li>
+                            <li>O jogo é registrado sem internet e enviado depois, sem perder nem repetir lance</li>
+                            <li>Súmula oficial em PDF, com as assinaturas feitas na tela</li>
+                        </ul>
+                    </div>
+                    <div class="shots" data-shots="esportes">
+                        <p class="shots-title">Mais telas</p>
+                        <div class="shots-strip">
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-pontuacao.webp"><img src="assets/telas/esportes-pontuacao.webp" alt="Súmula digital com a janela de marcar ponto aberta para um atleta" width="1400" height="788" loading="lazy"></a>
+                            <figcaption>Mesa de jogo no tablet: toque no atleta e marque o ponto</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-portal-sumula.webp"><img src="assets/telas/esportes-portal-sumula.webp" alt="Súmula de basquete em PDF com jogadores, faltas e pontuação corrida das duas equipes" width="1400" height="1006" loading="lazy"></a>
+                            <figcaption>Súmula oficial em PDF, montada com o que foi marcado no tablet</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-portal-painel.webp"><img src="assets/telas/esportes-portal-painel.webp" alt="Painel de controle do portal com totais de associações, atletas, solicitações e partidas" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Painel do organizador: associações, atletas, pedidos e jogos do dia</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-portal-jogos.webp"><img src="assets/telas/esportes-portal-jogos.webp" alt="Lista de partidas do campeonato com data, horário, local, equipes e placar" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Tabela de jogos do campeonato, com código e placar de cada partida</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-portal-classificacao.webp"><img src="assets/telas/esportes-portal-classificacao.webp" alt="Tabela de classificação do grupo A com vitórias, derrotas, pontos e saldo" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Classificação por grupo, com fase de grupos e mata-mata</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-portal-placar.webp"><img src="assets/telas/esportes-portal-placar.webp" alt="Placar final de 81 a 74 com as parciais de cada quarto" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Placar da partida, quarto a quarto</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-publico-partida.webp"><img src="assets/telas/esportes-publico-partida.webp" alt="Página pública com escudos, placar, fase, local e resultado da partida" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Página pública da partida, para equipes e torcida acompanharem</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-publico-rankings.webp"><img src="assets/telas/esportes-publico-rankings.webp" alt="Gráficos públicos de agenda por mês, equipes por resultado e atletas com mais pontos" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Rankings públicos: equipes, maiores pontuadores e origem dos pontos</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/esportes-codigo.webp"><img src="assets/telas/esportes-codigo.webp" alt="Tela do tablet para validar o código do campeonato e da partida" width="1400" height="788" loading="lazy"></a>
+                            <figcaption>Entrada na partida por código ou QR code</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/esportes-app.webp"><img src="assets/telas/esportes-app.webp" alt="Tela inicial do aplicativo +Esportes para visitante" width="600" height="1067" loading="lazy"></a>
+                            <figcaption>Aplicativo: torneios, partidas e rankings</figcaption>
+                        </figure>
                         </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span>ERP</span>
-                                <span data-lang-pt="Comércio exterior" data-lang-en="Foreign trade">Comércio exterior</span>
-                            </div>
-                            <h3 class="project-title" data-lang-pt="ERP de Comércio Exterior" data-lang-en="Foreign Trade ERP">ERP de Comércio Exterior</h3>
-                            <p class="project-description" data-lang-pt="Sistema para gestão de importação e exportação com clientes, catálogos, cálculos automatizados, câmbio em tempo real via Banco Central e controle do ciclo operacional." data-lang-en="System for import and export management with customers, catalogs, automated calculations, real-time exchange rates via Banco Central, and operational lifecycle control.">
-                                Sistema para gestão de importação e exportação com clientes, catálogos, cálculos automatizados, câmbio em tempo real via Banco Central e controle do ciclo operacional.
-                            </p>
-                            <div class="project-tech">
-                                <span>Laravel</span>
-                                <span>PostgreSQL</span>
-                                <span>jQuery</span>
-                                <span>AWS EC2</span>
-                                <span>Nginx</span>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="project-card">
-                        <div class="project-image" data-image="image2.png">
-                            <div class="project-image-placeholder">
-                                <span>Padaria Nova Esperança</span>
-                            </div>
+                <article class="case case-reverse">
+                    <div class="case-media case-media-phone">
+                        <img src="assets/case-gluck.webp" alt="Tela inicial do aplicativo Glück PRO com lucro real, valores a receber, agendados e faltas do mês" width="585" height="1300" loading="lazy">
+                    </div>
+                    <div class="case-body">
+                        <p class="case-kicker">Studios de beleza · produto por assinatura</p>
+                        <h3>Agenda, comissões e o lucro real de cada atendimento</h3>
+                        <p>Sou sócio técnico do Glück PRO. O produto nasceu em uma ferramenta sem código e precisava virar sistema de verdade: reescrevi tudo, com painel web, aplicativo Android e link de agendamento.</p>
+                        <ul class="case-proof">
+                            <li>Sistema antigo trocado com os dados reais: mais de 144 mil campos conferidos, nenhum diferente</li>
+                            <li>Assinatura comprada no aplicativo e confirmada pelo servidor</li>
+                            <li>Os dados de cada studio ficam isolados dos demais no próprio banco</li>
+                        </ul>
+                    </div>
+                    <div class="shots" data-shots="gluck">
+                        <p class="shots-title">Mais telas</p>
+                        <div class="shots-strip">
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-painel.webp"><img src="assets/telas/gluck-painel.webp" alt="Dashboard do Glück PRO com lucro real, faturamento, ticket médio e confirmações de presença" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Painel do studio: lucro real, faturamento e faltas do mês</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-agenda-equipe.webp"><img src="assets/telas/gluck-agenda-equipe.webp" alt="Agenda do dia com cinco profissionais, horários, almoço e ocupação" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Agenda do dia com a equipe inteira lado a lado</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-previa-lucro.webp"><img src="assets/telas/gluck-previa-lucro.webp" alt="Prévia financeira de um atendimento com comissão, insumos, custo fixo, taxa e lucro real" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Antes de fechar: comissão, insumos, taxa e o lucro de cada serviço</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-comissoes.webp"><img src="assets/telas/gluck-comissoes.webp" alt="Tela de comissões com total pendente, total pago e saldo por profissional" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Comissões: quanto falta pagar para cada profissional</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-crm.webp"><img src="assets/telas/gluck-crm.webp" alt="Lista de clientes sem retorno com dias de ausência e atalho para WhatsApp" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Clientes que sumiram e quanto dá para recuperar</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-relatorios.webp"><img src="assets/telas/gluck-relatorios.webp" alt="Gráficos de faturamento por dia, serviços mais vendidos, atendimentos por profissional e formas de pagamento" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Relatórios com gráficos de faturamento, serviços e equipe</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/gluck-agenda.webp"><img src="assets/telas/gluck-agenda.webp" alt="Agenda do aplicativo Glück PRO com três atendimentos" width="600" height="1334" loading="lazy"></a>
+                            <figcaption>No aplicativo: agenda do dia</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/gluck-lucro.webp"><img src="assets/telas/gluck-lucro.webp" alt="Atendimento finalizado mostrando o lucro real e os descontos" width="600" height="1334" loading="lazy"></a>
+                            <figcaption>No aplicativo: quanto sobrou no atendimento</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/gluck-chamar.webp"><img src="assets/telas/gluck-chamar.webp" alt="Tela Chamar com uma cliente sem retorno há 40 dias" width="600" height="1334" loading="lazy"></a>
+                            <figcaption>No aplicativo: cliente sem retorno, com atalho de WhatsApp</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/gluck-pagina-studio.webp"><img src="assets/telas/gluck-pagina-studio.webp" alt="Página do Studio Bella Nails com serviços, horários e botão de agendar" width="1400" height="985" loading="lazy"></a>
+                            <figcaption>Página pública do studio, onde a cliente agenda sozinha</figcaption>
+                        </figure>
                         </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span data-lang-pt="Gestão" data-lang-en="Management">Gestão</span>
-                                <span data-lang-pt="Operação comercial" data-lang-en="Commercial operations">Operação comercial</span>
-                            </div>
-                            <h3 class="project-title" data-lang-pt="Sistema de Gestão para Padaria" data-lang-en="Bakery Management System">Sistema de Gestão para Padaria</h3>
-                            <p class="project-description" data-lang-pt="Plataforma com dashboards, estoque, pedidos, clientes e precificação por nível para apoiar uma operação comercial em São Paulo." data-lang-en="Platform with dashboards, inventory, orders, customers, and tiered pricing to support a commercial operation in São Paulo.">
-                                Plataforma com dashboards, estoque, pedidos, clientes e precificação por nível para apoiar uma operação comercial em São Paulo.
-                            </p>
-                            <div class="project-tech">
-                                <span>Laravel</span>
-                                <span>PostgreSQL</span>
-                                <span>jQuery</span>
-                                <span>AWS</span>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="project-card">
-                        <div class="project-image" data-image="image3.png">
-                            <div class="project-image-placeholder">
-                                <span>PIB Finsocial</span>
-                            </div>
+                <article class="case">
+                    <div class="case-media case-media-wide">
+                        <img src="assets/case-padaria.webp" alt="Painel do sistema de uma panificadora com pedidos do mês e do dia, clientes, produtos, motoristas e gráficos de pedidos" width="1400" height="875" loading="lazy">
+                    </div>
+                    <div class="case-body">
+                        <p class="case-kicker">Panificadora atacadista · gestão da operação</p>
+                        <h3>Do pedido à entrega, sabendo de qual lote saiu cada produção</h3>
+                        <p>A panificadora vende para outras empresas e controlava tudo em papel. O sistema leva o pedido para a produção, da produção para o motorista, e guarda o registro que a fiscalização pede.</p>
+                        <ul class="case-proof">
+                            <li>Preço automático pela tabela de cada cliente e pedido recorrente em um clique</li>
+                            <li>Registro diário do lote e da validade de cada ingrediente, com relatório pronto</li>
+                            <li>Produção, almoxarifado e motorista entram direto na própria tela</li>
+                        </ul>
+                    </div>
+                    <div class="shots" data-shots="padaria">
+                        <p class="shots-title">Mais telas</p>
+                        <div class="shots-strip">
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-pedidos.webp"><img src="assets/telas/padaria-pedidos.webp" alt="Lista de pedidos com cliente, motorista, situação e data de entrega" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Pedidos do dia por cliente, motorista e situação</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-pedido-itens.webp"><img src="assets/telas/padaria-pedido-itens.webp" alt="Formulário de pedido com cinco itens, valores unitários e total geral" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Pedido com preço puxado da tabela do cliente</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-producao.webp"><img src="assets/telas/padaria-producao.webp" alt="Baixa de produção por categoria com itens pendentes e concluídos" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Produção do dia: o que falta e quem deu baixa</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-estoque.webp"><img src="assets/telas/padaria-estoque.webp" alt="Status do estoque com insumos em situação normal, atenção e reposição" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Estoque de insumos que avisa antes de faltar</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-rastreabilidade.webp"><img src="assets/telas/padaria-rastreabilidade.webp" alt="Registro de rastreabilidade com marca, lote e validades por ingrediente" width="1400" height="875" loading="lazy"></a>
+                            <figcaption>Lote e validade de cada ingrediente usado no dia</figcaption>
+                        </figure>
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/padaria-relatorio.webp"><img src="assets/telas/padaria-relatorio.webp" alt="Relatório de entregas em PDF com endereço, cliente, itens e colunas de conferência" width="1400" height="990" loading="lazy"></a>
+                            <figcaption>Relatório de entregas por motorista, pronto para conferir</figcaption>
+                        </figure>
                         </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span>Mobile</span>
-                                <span data-lang-pt="Play Store" data-lang-en="Play Store">Play Store</span>
-                            </div>
-                            <h3 class="project-title">PIB Finsocial</h3>
-                            <p class="project-description" data-lang-pt="Aplicativo publicado na Play Store para gerenciar portfólio da equipe de música, organizar eventos e armazenar partituras na nuvem." data-lang-en="App published on the Play Store to manage a music team's portfolio, organize events, and store sheet music in the cloud.">
-                                Aplicativo publicado na Play Store para gerenciar portfólio da equipe de música, organizar eventos e armazenar partituras na nuvem.
-                            </p>
-                            <div class="project-tech">
-                                <span>Flutter</span>
-                                <span>Mobile</span>
-                                <span>Cloud</span>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="project-card">
-                        <div class="project-image" data-image="image4.png">
-                            <div class="project-image-placeholder">
-                                <span>Calculadora Energética</span>
-                            </div>
+                <article class="case case-reverse">
+                    <div class="case-media case-media-wide">
+                        <img src="assets/telas/tv-home.webp" alt="Página inicial do site da emissora com a programação de agora, a seguir e mais tarde, destaques e notícias" width="1400" height="662" loading="lazy">
+                    </div>
+                    <div class="case-body">
+                        <p class="case-kicker">Emissora de TV regional · site, painel e aplicativo</p>
+                        <h3>Site refeito, com a redação publicando no próprio painel</h3>
+                        <p>O site dependia de um construtor de páginas, e os horários dos programas eram texto solto. Reconstruí o site, criei um painel só para a redação e reescrevi o aplicativo.</p>
+                        <ul class="case-proof">
+                            <li>Quatro anos de notícias levados para o site novo, sem perder nem duplicar</li>
+                            <li>O repórter envia, o editor revisa e publica, sem telas técnicas</li>
+                            <li>A grade mostra sozinha o que está no ar agora e o que vem a seguir</li>
+                        </ul>
+                    </div>
+                    <div class="shots" data-shots="tv">
+                        <p class="shots-title">Mais telas</p>
+                        <div class="shots-strip">
+                        <figure class="shot shot-wide">
+                            <a href="assets/telas/tv-metricas.webp"><img src="assets/telas/tv-metricas.webp" alt="Painel de métricas do portal com visualizações, sessões e conteúdos mais acessados" width="1400" height="1012" loading="lazy"></a>
+                            <figcaption>Painel de audiência próprio, sem guardar dado pessoal</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/tv-grade.webp"><img src="assets/telas/tv-grade.webp" alt="Faixa de programação no celular com Agora, A seguir e Mais tarde" width="493" height="575" loading="lazy"></a>
+                            <figcaption>No celular: o que está no ar agora e o que vem a seguir</figcaption>
+                        </figure>
+                        <figure class="shot shot-phone">
+                            <a href="assets/telas/tv-app.webp"><img src="assets/telas/tv-app.webp" alt="Tela inicial do aplicativo da emissora com botão de assistir ao vivo" width="600" height="1334" loading="lazy"></a>
+                            <figcaption>Aplicativo com transmissão ao vivo e notícias</figcaption>
+                        </figure>
                         </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span data-lang-pt="Energia" data-lang-en="Energy">Energia</span>
-                                <span data-lang-pt="Viabilidade" data-lang-en="Feasibility">Viabilidade</span>
-                            </div>
-                            <h3 class="project-title" data-lang-pt="Calculadora de Eficiência Energética" data-lang-en="Energy Efficiency Calculator">Calculadora de Eficiência Energética</h3>
-                            <p class="project-description" data-lang-pt="Sistema para calcular ações de eficiência energética, retrofit, economia, emissões de CO2e e análise financeira com VPL, Payback, TIR e ROI." data-lang-en="System to calculate energy efficiency actions, retrofits, savings, CO2e emissions, and financial analysis with NPV, Payback, IRR, and ROI.">
-                                Sistema para calcular ações de eficiência energética, retrofit, economia, emissões de CO2e e análise financeira com VPL, Payback, TIR e ROI.
-                            </p>
-                            <div class="project-tech">
-                                <span>Laravel</span>
-                                <span>Vue.js</span>
-                                <span>PostgreSQL</span>
-                                <span>Calculadora</span>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="project-card">
-                        <div class="project-image project-image-mobile" data-image="image5.png">
-                            <div class="project-image-placeholder">
-                                <span>+Esportes</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span>SaaS</span>
-                                <span>Multi-tenant</span>
-                            </div>
-                            <h3 class="project-title">+Esportes</h3>
-                            <p class="project-description" data-lang-pt="Sistema e aplicativo para gerenciamento de associações esportivas, com múltiplas entidades, atletas, eventos e informações organizacionais." data-lang-en="System and app for managing sports associations, with multiple entities, athletes, events, and organizational information.">
-                                Sistema e aplicativo para gerenciamento de associações esportivas, com múltiplas entidades, atletas, eventos e informações organizacionais.
-                            </p>
-                            <div class="project-tech">
-                                <span>Laravel</span>
-                                <span>Mobile App</span>
-                                <span>Gestão</span>
-                                <span>Multi-tenant</span>
-                            </div>
-                        </div>
-                    </article>
+                <div class="more-projects">
+                    <h3>Também já construí</h3>
+                    <ul>
+                        <li>Sistema de importação e exportação com câmbio do Banco Central em tempo real</li>
+                        <li>Calculadora de eficiência energética com análise de retorno do investimento</li>
+                        <li>Calculadora de preços vendida on-line, com pagamento e acesso liberados automaticamente</li>
+                        <li>Aplicativo para equipes de música organizarem eventos e repertório</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="skills section-block section-muted">
+        <section id="processo" class="section-block">
             <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">04 / Stack</p>
-                    <h2 data-lang-pt="Ferramentas que uso para criar produtos web confiáveis." data-lang-en="Tools I use to create reliable web products.">Ferramentas que uso para criar produtos web confiáveis.</h2>
-                    <p data-lang-pt="Stack orientado a backend sólido, interfaces produtivas, integrações e infraestrutura para colocar sistemas em produção." data-lang-en="A stack oriented toward solid backend work, productive interfaces, integrations, and infrastructure to ship systems to production.">
-                        Stack orientado a backend sólido, interfaces produtivas, integrações e infraestrutura para colocar sistemas em produção.
+                <header class="section-head">
+                    <p class="eyebrow">Como funciona</p>
+                    <h2>Você vê funcionando cedo e sabe quanto custa antes de começar.</h2>
+                </header>
+
+                <ol class="steps">
+                    <li class="step">
+                        <span class="step-number">1</span>
+                        <h3>Conversa</h3>
+                        <p>Você me conta como a operação funciona hoje. Quinze a vinte minutos, pelo WhatsApp ou em chamada, sem custo.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">2</span>
+                        <h3>Mapa do sistema</h3>
+                        <p>Eu desenho o fluxo, as telas principais e as fases. Você recebe escopo, prazo e preço fechados antes de qualquer código.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">3</span>
+                        <h3>Entregas por fase</h3>
+                        <p>A primeira fase resolve a dor principal e entra em uso logo. Você acompanha o sistema funcionando, não uma apresentação.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">4</span>
+                        <h3>No ar e evoluindo</h3>
+                        <p>Eu cuido da publicação, do backup e das melhorias. O código e os dados são seus.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="sobre" class="section-block section-muted">
+            <div class="container about-grid">
+                <div>
+                    <p class="eyebrow">Por que direto comigo</p>
+                    <h2>Sem atendimento no meio, sem surpresa no fim.</h2>
+                    <p class="about-text">
+                        Sou o Heryck. Trabalho com software desde 2022 e já passei por sistemas de comércio exterior, energia, laboratório, imóveis e responsabilidade social.
+                        Hoje construo sistemas e aplicativos para empresas que precisam de algo feito para a própria operação.
                     </p>
                 </div>
 
-                <div class="skills-grid">
-                    <article class="skill-category">
-                        <h3 class="skill-category-title">Backend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/php.svg" alt="PHP" class="skill-icon">
-                                    <span class="skill-name">PHP</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/laravel.svg" alt="Laravel" class="skill-icon">
-                                    <span class="skill-name">Laravel</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" alt="Node.js" class="skill-icon">
-                                    <span class="skill-name">Node.js</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nestjs.svg" alt="NestJS" class="skill-icon">
-                                    <span class="skill-name">NestJS</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg" alt="TypeScript" class="skill-icon">
-                                    <span class="skill-name">TypeScript</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                        </div>
-                    </article>
+                <ul class="reasons">
+                    <li>
+                        <h3>Você fala com quem faz</h3>
+                        <p>A mesma pessoa entende o seu problema, escreve o sistema e responde quando você chama.</p>
+                    </li>
+                    <li>
+                        <h3>Preço fechado por fase</h3>
+                        <p>Cada fase tem escopo, prazo e valor combinados antes de começar.</p>
+                    </li>
+                    <li>
+                        <h3>O sistema é seu</h3>
+                        <p>Código, banco de dados e hospedagem ficam no seu nome.</p>
+                    </li>
+                    <li>
+                        <h3>Rápido, com conferência</h3>
+                        <p>Uso inteligência artificial para ganhar velocidade e testes automatizados para conferir o resultado.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-                    <article class="skill-category">
-                        <h3 class="skill-category-title">Frontend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/vuedotjs.svg" alt="Vue.js" class="skill-icon">
-                                    <span class="skill-name">Vue.js</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript" class="skill-icon">
-                                    <span class="skill-name">JavaScript</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/jquery.svg" alt="jQuery" class="skill-icon">
-                                    <span class="skill-name">jQuery</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bootstrap.svg" alt="Bootstrap" class="skill-icon">
-                                    <span class="skill-name">Bootstrap</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/laravel.svg" alt="Livewire" class="skill-icon">
-                                    <span class="skill-name">Livewire</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
-                            </div>
-                        </div>
-                    </article>
+        <section id="duvidas" class="section-block">
+            <div class="container container-narrow">
+                <header class="section-head">
+                    <p class="eyebrow">Dúvidas</p>
+                    <h2>O que costumam me perguntar antes de começar.</h2>
+                </header>
 
-                    <article class="skill-category">
-                        <h3 class="skill-category-title">Database &amp; Infra</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL" class="skill-icon">
-                                    <span class="skill-name">PostgreSQL</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" alt="MySQL" class="skill-icon">
-                                    <span class="skill-name">MySQL</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker" class="skill-icon">
-                                    <span class="skill-name">Docker</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" class="skill-icon">
-                                    <span class="skill-name">AWS EC2</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nginx.svg" alt="Nginx" class="skill-icon">
-                                    <span class="skill-name">Nginx</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                            </div>
-                        </div>
-                    </article>
+                <div class="faq">
+                    <details>
+                        <summary>Quanto custa?</summary>
+                        <p>Depende do tamanho da primeira fase. Antes de qualquer código, você recebe escopo, prazo e preço fechados, e decide com o número na mão.</p>
+                    </details>
+                    <details>
+                        <summary>Quanto tempo leva?</summary>
+                        <p>A primeira fase é pensada para entrar em uso em quatro a oito semanas. Sistemas maiores seguem por fases, cada uma com a sua data.</p>
+                    </details>
+                    <details>
+                        <summary>Você trabalha sozinho?</summary>
+                        <p>Sim. Por isso você fala direto com quem constrói, e por isso o projeto é dividido em fases que cabem em um ritmo que eu consigo garantir.</p>
+                    </details>
+                    <details>
+                        <summary>Já tenho um sistema. Dá para aproveitar?</summary>
+                        <p>Os dados quase sempre dá. Eu começo por um diagnóstico do que existe e digo com franqueza o que vale manter e o que vale refazer.</p>
+                    </details>
+                    <details>
+                        <summary>O sistema fica meu?</summary>
+                        <p>Fica. Código, banco de dados e contas de hospedagem ficam no seu nome.</p>
+                    </details>
+                    <details>
+                        <summary>Você atende a minha cidade?</summary>
+                        <p>Atendo o Brasil inteiro, por WhatsApp e chamada de vídeo.</p>
+                    </details>
+                    <details>
+                        <summary>E depois que o sistema fica pronto?</summary>
+                        <p>Eu sigo cuidando: publicação, backup, monitoramento e melhorias, em um plano mensal.</p>
+                    </details>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact section-block">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">05 / <span data-lang-pt="Contato" data-lang-en="Contact">Contato</span></p>
-                    <h2 data-lang-pt="Vamos conversar sobre o próximo sistema?" data-lang-en="Let's talk about the next system?">Vamos conversar sobre o próximo sistema?</h2>
-                    <p data-lang-pt="Se você precisa tirar uma ideia do papel, evoluir um sistema existente ou integrar processos, me envie uma mensagem com o contexto." data-lang-en="If you need to turn an idea into software, evolve an existing system, or integrate processes, send me a message with the context.">
-                        Se você precisa tirar uma ideia do papel, evoluir um sistema existente ou integrar processos, me envie uma mensagem com o contexto.
-                    </p>
-                </div>
-
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3 data-lang-pt="Canais diretos" data-lang-en="Direct channels">Canais diretos</h3>
-                        <p data-lang-pt="Prefere ser direto? Estes canais são os melhores caminhos para contato profissional, propostas e oportunidades." data-lang-en="Prefer to be direct? These are the best channels for professional contact, proposals, and opportunities.">
-                            Prefere ser direto? Estes canais são os melhores caminhos para contato profissional, propostas e oportunidades.
-                        </p>
-                        <div class="contact-links">
-                            <a href="mailto:heryckmota@gmail.com" class="contact-link">
-                                <span class="contact-icon">Email</span>
-                                <span>heryckmota@gmail.com</span>
-                            </a>
-                            <a href="https://wa.me/5562985583519" target="_blank" rel="noopener noreferrer" class="contact-link">
-                                <span class="contact-icon">WhatsApp</span>
-                                <span>(62) 98558-3519</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/heryckmbss/" target="_blank" rel="noopener noreferrer" class="contact-link">
-                                <span class="contact-icon">LinkedIn</span>
-                                <span>heryckmbss</span>
-                            </a>
-                            <a href="https://github.com/HeryckMbs" target="_blank" rel="noopener noreferrer" class="contact-link">
-                                <span class="contact-icon">GitHub</span>
-                                <span>HeryckMbs</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-wrapper">
-                        <form class="contact-form" id="contactForm">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" required autocomplete="name">
-                                <label for="name" data-lang-pt="Nome" data-lang-en="Name">Nome</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" required autocomplete="email">
-                                <label for="email" data-lang-pt="Email" data-lang-en="Email">Email</label>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                                <label for="message" data-lang-pt="Mensagem" data-lang-en="Message">Mensagem</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary" data-lang-pt="Enviar mensagem" data-lang-en="Send message">Enviar mensagem</button>
-                        </form>
-                    </div>
-                </div>
+        <section id="contato" class="section-block cta-final">
+            <div class="container container-narrow">
+                <h2>Me conta como a sua operação funciona hoje.</h2>
+                <p>Em uma conversa eu já consigo dizer se um sistema sob medida faz sentido para você, e por onde começar.</p>
+                <a class="btn btn-whatsapp btn-large" data-wa="final" href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20sistema%20para%20a%20minha%20empresa." target="_blank" rel="noopener">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                    <span>Conversar no WhatsApp</span>
+                </a>
+                <p class="cta-alt">Prefere e-mail? <a href="mailto:heryckmota@gmail.com">heryckmota@gmail.com</a></p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-content">
-            <p>&copy; 2026 Heryck Mota.</p>
-            <p data-lang-pt="Desenvolvido com atenção a produto, código e experiência." data-lang-en="Built with attention to product, code, and experience.">Desenvolvido com atenção a produto, código e experiência.</p>
+        <div class="container footer-inner">
+            <p>© 2026 Heryck Mota</p>
+            <ul>
+                <li><a href="privacidade.html">Política de privacidade</a></li>
+                <li><a href="https://www.linkedin.com/in/heryckmbss/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://github.com/HeryckMbs" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
         </div>
     </footer>
+
+    <a class="sticky-cta" data-wa="fixo" href="https://wa.me/5562985583519?text=Oi%2C%20Heryck!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20sistema%20para%20a%20minha%20empresa." target="_blank" rel="noopener" hidden>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+        <span>Conversar no WhatsApp</span>
+    </a>
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies" hidden>
+        <p>Uso cookies da Meta para medir os meus anúncios. Você pode aceitar ou recusar; o site funciona igual. <a href="privacidade.html">Saiba mais</a></p>
+        <div class="cookie-actions">
+            <button type="button" class="btn btn-ghost btn-small" data-cookie="recusar">Recusar</button>
+            <button type="button" class="btn btn-solid btn-small" data-cookie="aceitar">Aceitar</button>
+        </div>
+    </div>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Tela ampliada">
+        <div class="lightbox-inner">
+            <button type="button" class="btn btn-ghost btn-small lightbox-close">Fechar</button>
+            <div class="lightbox-stage"><img alt=""></div>
+            <p class="lightbox-caption"></p>
+        </div>
+    </dialog>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24Zm-3.52 4.4c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.13.16 1.76 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48Z"/>
+        </symbol>
+    </svg>
 
     <script src="script.js"></script>
 </body>
