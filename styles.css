@@ -1003,10 +1003,6 @@ p {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .reasons {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .footer {
         padding-bottom: 28px;
     }
