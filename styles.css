@@ -740,6 +740,37 @@ p {
     color: var(--text-soft);
 }
 
+.path-title {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.path {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+    list-style: none;
+}
+
+.path li {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.path span {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 .reasons {
     display: grid;
     gap: 14px;
